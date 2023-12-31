@@ -20,7 +20,7 @@ typeid:47,
 uuid:"216F37B8-34ED-4C1D-9D0D-9C6DC45BC019"
 },
 {
-height:721,
+height:622,
 partType:5,
 typeid:19,
 uuid:"2BE72F01-22CC-4DAE-A1BE-BEC180492D45"
@@ -103,7 +103,7 @@ typeid:47,
 uuid:"7F5F19F4-D31B-40BF-9EC9-D9A0E535B3E9"
 },
 {
-cssPosition:"39,-1,-1,349,546,59",
+cssPosition:"39,-1,-1,349,503,59",
 json:{
 cssPosition:{
 bottom:"-1",
@@ -111,7 +111,7 @@ height:"59",
 left:"349",
 right:"-1",
 top:"39",
-width:"546"
+width:"503"
 },
 styleClass:"mt-4x",
 text:"Hostel Management System"
@@ -123,15 +123,15 @@ typeid:47,
 uuid:"A3E8CAFF-785F-4989-8837-4DA2D3C7D323"
 },
 {
-cssPosition:"0,-1,-1,3,1435,682",
+cssPosition:"0,-1,-1,3,1336,622",
 json:{
 cssPosition:{
 bottom:"-1",
-height:"682",
+height:"622",
 left:"3",
 right:"-1",
 top:"0",
-width:"1435"
+width:"1336"
 },
 styleClass:"bg"
 },
@@ -142,7 +142,7 @@ typeid:47,
 uuid:"AFB0FC7E-4FEA-4BE6-937A-51FD9FBF0B11"
 },
 {
-cssPosition:"191,-1,-1,360,551,279",
+cssPosition:"191,-1,-1,360,508,279",
 json:{
 cssPosition:{
 bottom:"-1",
@@ -150,7 +150,7 @@ height:"279",
 left:"360",
 right:"-1",
 top:"191",
-width:"551"
+width:"508"
 },
 styleClass:"well"
 },
@@ -165,6 +165,6 @@ name:"adminLogin",
 navigatorID:"-1",
 scrollbars:36,
 showInMenu:true,
-size:"1434,361",
+size:"1340,721",
 typeid:3,
 uuid:"BD718283-7F19-47C2-8F84-754E7B10A769"
