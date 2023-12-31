@@ -214,7 +214,17 @@ function afterOpen(event) { }
 function getMenuItemFormName(menuItemID) {
 	
 	/** @type {String} */
-	var formName = menuItemID;
+	var formName;
+	
+	if(menuItemID == "User Admin"){
+		formName = "adminLogin";
+	}
+	else{
+		/** @type {String} */
+		formName = menuItemID;
+	}
+	
+	
 	return formName;
 }
 

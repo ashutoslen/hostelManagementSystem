@@ -144,6 +144,12 @@ uuid:"9F326D15-142C-4BA3-855E-3DFBA0BF286B"
 },
 {
 cssPosition:"61,-1,-6,0,300,-1",
+customProperties:"methods:{\
+onMenuItemSelected:{\
+arguments:null,\
+parameters:null\
+}\
+}",
 extendsID:"FA2D43DA-AF18-49B5-9747-1EAAF1DF855B",
 json:{
 containedForm:null,
@@ -154,7 +160,8 @@ left:"0",
 right:"-1",
 top:"61",
 width:"300"
-}
+},
+onMenuItemSelected:"8D3EB501-1445-45BA-8F03-D98A73950F96"
 },
 typeName:"servoyextra-sidenav",
 typeid:47,

@@ -29,6 +29,13 @@ uuid:"0AFF670C-F94F-4579-90F4-86B1FB4F3BE6"
 },
 {
 encapsulation:0,
+mimeType:"image/jpeg",
+name:"login-bg.jpg",
+typeid:37,
+uuid:"EF0FED3D-821A-4944-AEDD-9C961522432C"
+},
+{
+encapsulation:0,
 mimeType:"text/css",
 name:"variants.json",
 typeid:37,
