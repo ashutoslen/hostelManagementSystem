@@ -4,6 +4,7 @@ encapsulation:108,
 items:[
 {
 cssPosition:"330,-1,-1,454,287,40",
+formIndex:7,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -12,7 +13,8 @@ left:"454",
 right:"-1",
 top:"330",
 width:"287"
-}
+},
+formIndex:7
 },
 name:"textbox_4c",
 typeName:"bootstrapcomponents-textbox",
@@ -27,6 +29,7 @@ uuid:"2BE72F01-22CC-4DAE-A1BE-BEC180492D45"
 },
 {
 cssPosition:"385,-1,-1,454,287,30",
+formIndex:1,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -36,6 +39,7 @@ right:"-1",
 top:"385",
 width:"287"
 },
+formIndex:1,
 styleClass:"btn btn-primary btn-block",
 text:"LOGIN"
 },
@@ -47,6 +51,7 @@ uuid:"3AC52757-9EAA-4A4E-A576-3803FDCAF667"
 },
 {
 cssPosition:"257,-1,-1,456,287,40",
+formIndex:6,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -55,7 +60,8 @@ left:"456",
 right:"-1",
 top:"257",
 width:"287"
-}
+},
+formIndex:6
 },
 name:"textbox_4",
 typeName:"bootstrapcomponents-textbox",
@@ -64,6 +70,7 @@ uuid:"48CBBC1D-E03A-4950-B45B-F522623571FE"
 },
 {
 cssPosition:"303,-1,-1,454,288,20",
+formIndex:5,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -73,6 +80,7 @@ right:"-1",
 top:"303",
 width:"288"
 },
+formIndex:5,
 styleClass:"text-sm",
 text:"PASSWORD"
 },
@@ -84,6 +92,7 @@ uuid:"6EFB3E47-0F9A-46FB-B123-9A66D4F494D1"
 },
 {
 cssPosition:"223,-1,-1,456,288,26",
+formIndex:4,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -93,6 +102,7 @@ right:"-1",
 top:"223",
 width:"288"
 },
+formIndex:4,
 styleClass:"text-sm",
 text:"YOUR USERNAME OR EMAIL"
 },
@@ -104,6 +114,7 @@ uuid:"7F5F19F4-D31B-40BF-9EC9-D9A0E535B3E9"
 },
 {
 cssPosition:"39,-1,-1,349,503,59",
+formIndex:2,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -113,6 +124,7 @@ right:"-1",
 top:"39",
 width:"503"
 },
+formIndex:2,
 styleClass:"mt-4x",
 text:"Hostel Management System"
 },
@@ -123,16 +135,17 @@ typeid:47,
 uuid:"A3E8CAFF-785F-4989-8837-4DA2D3C7D323"
 },
 {
-cssPosition:"0,-1,-1,3,1336,622",
+cssPosition:"0,-1,-1,0,1336,622",
 json:{
 cssPosition:{
 bottom:"-1",
 height:"622",
-left:"3",
+left:"0",
 right:"-1",
 top:"0",
 width:"1336"
 },
+formIndex:0,
 styleClass:"bg"
 },
 name:"image_1",
@@ -143,6 +156,7 @@ uuid:"AFB0FC7E-4FEA-4BE6-937A-51FD9FBF0B11"
 },
 {
 cssPosition:"191,-1,-1,360,508,279",
+formIndex:3,
 json:{
 cssPosition:{
 bottom:"-1",
@@ -152,6 +166,7 @@ right:"-1",
 top:"191",
 width:"508"
 },
+formIndex:3,
 styleClass:"well"
 },
 name:"label_2",
