@@ -11,5 +11,12 @@ function onMenuItemSelectedHandler(menuItemId, event) {
 	if(menuItemId == "User Admin"){
 		forms.adminLogin.controller.show();
 	}
+	else if(menuItemId == "User Registration"){
+		elements.tabpanel_homePage.tabIndex = 2;
+		
+	}
+	else if(menuItemId == "User Login"){
+		elements.tabpanel_homePage.tabIndex = 1;
+	}
 	//return _super.onMenuItemSelectedHandler(menuItemId, event)
 }
