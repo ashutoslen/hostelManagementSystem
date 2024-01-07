@@ -1,0 +1,9 @@
+addEmptyValue:1,
+customValues:"Male\r\
+Female\r\
+Others",
+displayValueType:12,
+name:"gender_val",
+realValueType:12,
+typeid:34,
+uuid:"10821F4E-A802-4E52-8441-5AADEC1B5867"

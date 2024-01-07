@@ -32,3 +32,28 @@ var lastName = null;
  * @properties={typeid:35,uuid:"B0A899F6-9039-46BD-B8E5-C0EAC404C72D"}
  */
 var gender = null;
+
+/**
+ * 
+ * @type {String}
+ * 
+ * @properties={typeid:35,uuid:"B6F6461C-9A02-46B7-8E54-0E13907F376B"}
+ */
+var ContactNo = null;
+
+/**
+ * 
+ * @type {String}
+ * 
+ * @properties={typeid:35,uuid:"9194AA72-EA73-41FD-9CA1-4F2C8377D94F"}
+ */
+var emailId = null;
+
+/**
+ * @properties={typeid:35,uuid:"ECE06AEE-08DB-4114-A9EA-9226CF0BA2F2",variableType:-4}
+ */
+var password = null;
+/**
+ * @properties={typeid:35,uuid:"FFC26A6A-2D8C-4156-8472-99EA26531FAE",variableType:-4}
+ */
+var confirmPassword = null;
