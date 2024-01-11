@@ -1,5 +1,5 @@
 fileVersion:56,
-mustAuthenticate:false,
+mustAuthenticate:true,
 name:"hostelManagement",
 solutionType:1024,
 typeid:43,

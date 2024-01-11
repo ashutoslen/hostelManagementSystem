@@ -15,7 +15,9 @@ top:"330",
 width:"287"
 },
 dataProviderID:"adminPassword",
-formIndex:6
+formIndex:6,
+inputType:"password",
+placeholderText:"Password"
 },
 name:"textbox_4c",
 typeName:"bootstrapcomponents-textbox",
@@ -64,7 +66,8 @@ top:"257",
 width:"287"
 },
 dataProviderID:"adminUsername",
-formIndex:5
+formIndex:5,
+placeholderText:"Username"
 },
 name:"textbox_4",
 typeName:"bootstrapcomponents-textbox",

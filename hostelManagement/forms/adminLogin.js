@@ -19,21 +19,35 @@ var adminUsername = null;
  * @param {JSEvent} event
  *
  * @properties={typeid:24,uuid:"10F8DBB4-EE07-4D67-8173-E0ACD476C253"}
+ * @AllowToRunInFind
  */
 function adminLogin(event) {
 	
 	if(!adminUsername || !adminPassword){
 		
 		plugins.dialogs.showWarningDialog('Invalid Credentials','Please enter valid credentials !!');
+		adminUsername = null;
+		adminPassword = null;
 		return;
 		
 	}
 	
-	if(adminUsername == 'admin' && adminPassword == 'Test@1234'){
-		forms.dashboard.controller.show();
+	/** @type {JSFoundset<db:/hostel/admin>} */
+	var adminFS = databaseManager.getFoundSet('hostel','admin');
+	adminFS.loadAllRecords();
+	
+	if(adminFS.find()){
+		adminFS.username = "admin";
+		adminFS.search();
+	}
+	
+	if((adminUsername == adminFS.username || adminUsername === adminFS.email) && adminPassword == adminFS.password){
+		security.login(adminUsername,adminFS.email,['Administrators'])
 	}
 	else{
 		plugins.dialogs.showWarningDialog('Invalid Credentials','Please enter valid credentials !!');
+		adminUsername = null;
+		adminPassword = null;
 		return;
 	}
 
