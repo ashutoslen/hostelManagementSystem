@@ -13,6 +13,7 @@ right:"-1",
 top:"213",
 width:"272"
 },
+dataProviderID:"userUsername",
 placeholderText:"Email / Registration Number"
 },
 name:"textbox_3",
@@ -31,6 +32,8 @@ right:"-1",
 top:"290",
 width:"275"
 },
+dataProviderID:"userPassword",
+inputType:"password",
 placeholderText:"Password"
 },
 name:"textbox_3c",
@@ -95,6 +98,7 @@ right:"-1",
 top:"346",
 width:"279"
 },
+onActionMethodID:"130952D5-7C19-4B6B-9DF0-E14C3BC3AD08",
 styleClass:"btn btn-primary btn-block",
 text:"login"
 },
@@ -115,6 +119,7 @@ right:"-1",
 top:"438",
 width:"148"
 },
+onActionMethodID:"24364660-AA03-4B8D-80F3-6764B4CA0FE0",
 text:"Forgot Password?"
 },
 name:"label_5",
@@ -145,6 +150,7 @@ uuid:"FFB970A0-9CDB-4C2E-8626-24F031D19191"
 ],
 name:"userLogin",
 navigatorID:"-1",
+onShowMethodID:"D4041E43-EF17-4343-845A-FC6E434498EC",
 showInMenu:true,
 typeid:3,
 uuid:"DDCBF641-62C0-4B04-9741-8D725F837D4C"

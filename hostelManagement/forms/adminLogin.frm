@@ -184,6 +184,7 @@ uuid:"B9CF7494-D6F3-4D36-8878-E998E2442224"
 ],
 name:"adminLogin",
 navigatorID:"-1",
+onShowMethodID:"89CBE7D2-49FF-454B-8479-02F32FFE6381",
 scrollbars:36,
 showInMenu:true,
 size:"1340,721",

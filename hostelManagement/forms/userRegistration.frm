@@ -2,7 +2,7 @@ customProperties:"formComponent:false,\
 useCssPosition:true",
 items:[
 {
-cssPosition:"515,-1,-1,396,80,30",
+cssPosition:"485,-1,-1,396,80,30",
 formIndex:1,
 json:{
 cssPosition:{
@@ -10,10 +10,11 @@ bottom:"-1",
 height:"30",
 left:"396",
 right:"-1",
-top:"515",
+top:"485",
 width:"80"
 },
 formIndex:1,
+onActionMethodID:"3F5E003F-BE51-4CEC-A5E2-139EF3DAC670",
 styleClass:"btn btn-primary",
 text:"Register"
 },
@@ -24,7 +25,7 @@ typeid:47,
 uuid:"006270EB-8FC7-45FA-8B7C-8B9BC462D433"
 },
 {
-cssPosition:"316,137,-1,312,191,30",
+cssPosition:"290,137,-1,312,191,30",
 formIndex:3,
 json:{
 cssPosition:{
@@ -32,7 +33,7 @@ bottom:"-1",
 height:"30",
 left:"312",
 right:"137",
-top:"316",
+top:"290",
 width:"191"
 },
 dataProviderID:"gender",
@@ -45,7 +46,7 @@ typeid:47,
 uuid:"0465D389-597D-4BC3-BE5C-5B4AAA996387"
 },
 {
-cssPosition:"197,139,-1,311,190,30",
+cssPosition:"171,139,-1,311,190,30",
 formIndex:2,
 json:{
 cssPosition:{
@@ -53,7 +54,7 @@ bottom:"-1",
 height:"30",
 left:"311",
 right:"139",
-top:"197",
+top:"171",
 width:"190"
 },
 dataProviderID:"firstName",
@@ -65,7 +66,7 @@ typeid:47,
 uuid:"2385627D-E6BA-469D-AB09-AD66CEE083D2"
 },
 {
-cssPosition:"318,-1,-1,154,137,17",
+cssPosition:"292,-1,-1,154,137,17",
 formIndex:5,
 json:{
 cssPosition:{
@@ -73,7 +74,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"318",
+top:"292",
 width:"137"
 },
 formIndex:5,
@@ -87,7 +88,7 @@ typeid:47,
 uuid:"3F014E54-1F54-4B2C-80B2-6C2D7151FEDA"
 },
 {
-cssPosition:"199,-1,-1,154,137,17",
+cssPosition:"173,-1,-1,154,137,17",
 formIndex:6,
 json:{
 cssPosition:{
@@ -95,7 +96,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"199",
+top:"173",
 width:"137"
 },
 formIndex:6,
@@ -109,7 +110,7 @@ typeid:47,
 uuid:"479F06B2-7FBB-42A0-808B-519BB383D0A8"
 },
 {
-cssPosition:"476,-1,-1,154,137,17",
+cssPosition:"450,-1,-1,154,137,17",
 formIndex:8,
 json:{
 cssPosition:{
@@ -117,7 +118,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"476",
+top:"450",
 width:"137"
 },
 formIndex:8,
@@ -131,7 +132,7 @@ typeid:47,
 uuid:"48794147-1645-4AA5-AFDA-88986445E3F3"
 },
 {
-cssPosition:"434,-1,-1,154,137,17",
+cssPosition:"408,-1,-1,154,137,17",
 formIndex:8,
 json:{
 cssPosition:{
@@ -139,7 +140,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"434",
+top:"408",
 width:"137"
 },
 formIndex:8,
@@ -153,7 +154,7 @@ typeid:47,
 uuid:"5CDFB547-5E8E-43EF-AC93-865ECD9DD472"
 },
 {
-cssPosition:"474,133,-1,308,199,30",
+cssPosition:"448,133,-1,308,199,30",
 formIndex:3,
 json:{
 cssPosition:{
@@ -161,7 +162,7 @@ bottom:"-1",
 height:"30",
 left:"308",
 right:"133",
-top:"474",
+top:"448",
 width:"199"
 },
 dataProviderID:"confirmPassword",
@@ -193,12 +194,12 @@ typeid:47,
 uuid:"72D521B0-6381-40C4-905E-660E335FADCC"
 },
 {
-height:553,
+height:529,
 typeid:19,
 uuid:"7895FB8B-2DF9-43D4-A236-2AEE1670B6C6"
 },
 {
-cssPosition:"394,135,-1,311,194,30",
+cssPosition:"368,135,-1,311,194,30",
 formIndex:3,
 json:{
 cssPosition:{
@@ -206,7 +207,7 @@ bottom:"-1",
 height:"30",
 left:"311",
 right:"135",
-top:"394",
+top:"368",
 width:"194"
 },
 dataProviderID:"emailId",
@@ -218,7 +219,7 @@ typeid:47,
 uuid:"7C3F76E6-7FBA-485F-B078-99FE58CE5A34"
 },
 {
-cssPosition:"159,-1,-1,154,137,17",
+cssPosition:"133,-1,-1,154,137,17",
 formIndex:8,
 json:{
 cssPosition:{
@@ -226,7 +227,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"159",
+top:"133",
 width:"137"
 },
 formIndex:8,
@@ -240,7 +241,7 @@ typeid:47,
 uuid:"83199B4D-2A5E-471E-92A1-26486D96BA85"
 },
 {
-cssPosition:"239,-1,-1,154,137,17",
+cssPosition:"213,-1,-1,154,137,17",
 formIndex:9,
 json:{
 cssPosition:{
@@ -248,7 +249,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"239",
+top:"213",
 width:"137"
 },
 formIndex:9,
@@ -262,7 +263,7 @@ typeid:47,
 uuid:"8BD8C693-1863-4FA9-B069-E3752255BFD7"
 },
 {
-cssPosition:"392,-1,-1,154,137,17",
+cssPosition:"366,-1,-1,154,137,17",
 formIndex:8,
 json:{
 cssPosition:{
@@ -270,7 +271,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"392",
+top:"366",
 width:"137"
 },
 formIndex:8,
@@ -284,14 +285,14 @@ typeid:47,
 uuid:"909D421E-107A-484F-BAA3-410703911153"
 },
 {
-cssPosition:"86,5,-1,30,605,43",
+cssPosition:"75,5,-1,30,605,43",
 json:{
 cssPosition:{
 bottom:"-1",
 height:"43",
 left:"30",
 right:"5",
-top:"86",
+top:"75",
 width:"605"
 },
 styleClass:"panel-heading",
@@ -304,7 +305,7 @@ typeid:47,
 uuid:"9D7F654D-3D60-458F-ABD7-5B41C397E44B"
 },
 {
-cssPosition:"355,135,-1,310,190,30",
+cssPosition:"329,135,-1,310,190,30",
 formIndex:3,
 json:{
 cssPosition:{
@@ -312,10 +313,10 @@ bottom:"-1",
 height:"30",
 left:"310",
 right:"135",
-top:"355",
+top:"329",
 width:"190"
 },
-dataProviderID:"ContactNo",
+dataProviderID:"contactNo",
 formIndex:3
 },
 name:"textbox_3cccc",
@@ -324,7 +325,7 @@ typeid:47,
 uuid:"B36D08E7-EC44-43CE-80E1-AE140E5A7B7C"
 },
 {
-cssPosition:"278,139,-1,312,189,30",
+cssPosition:"252,139,-1,312,189,30",
 formIndex:1,
 json:{
 cssPosition:{
@@ -332,10 +333,10 @@ bottom:"-1",
 height:"30",
 left:"312",
 right:"139",
-top:"278",
+top:"252",
 width:"189"
 },
-dataProviderID:"middleName",
+dataProviderID:"lastName",
 formIndex:1
 },
 name:"textbox_3ccc",
@@ -344,14 +345,14 @@ typeid:47,
 uuid:"BF0B6E82-72D8-4E9C-93DB-25FD313B12D0"
 },
 {
-cssPosition:"131,7,4,31,602,325",
+cssPosition:"121,7,10,31,602,327",
 json:{
 cssPosition:{
-bottom:"4",
-height:"325",
+bottom:"10",
+height:"327",
 left:"31",
 right:"7",
-top:"131",
+top:"121",
 width:"602"
 },
 formIndex:0,
@@ -364,7 +365,7 @@ typeid:47,
 uuid:"BF8C3A04-AEC5-4BF9-9CC2-7E4ACB83E603"
 },
 {
-cssPosition:"356,-1,-1,154,137,17",
+cssPosition:"330,-1,-1,154,137,17",
 formIndex:8,
 json:{
 cssPosition:{
@@ -372,7 +373,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"356",
+top:"330",
 width:"137"
 },
 formIndex:8,
@@ -386,7 +387,7 @@ typeid:47,
 uuid:"C2AAF481-AED2-41B9-9A56-A25410768735"
 },
 {
-cssPosition:"238,139,-1,312,189,30",
+cssPosition:"212,139,-1,312,189,30",
 formIndex:7,
 json:{
 cssPosition:{
@@ -394,7 +395,7 @@ bottom:"-1",
 height:"30",
 left:"312",
 right:"139",
-top:"238",
+top:"212",
 width:"189"
 },
 dataProviderID:"middleName",
@@ -406,7 +407,7 @@ typeid:47,
 uuid:"C62658E2-DAB1-4DDD-B617-9A4D2C58BBB7"
 },
 {
-cssPosition:"434,132,-1,309,199,30",
+cssPosition:"408,132,-1,309,199,30",
 formIndex:3,
 json:{
 cssPosition:{
@@ -414,7 +415,7 @@ bottom:"-1",
 height:"30",
 left:"309",
 right:"132",
-top:"434",
+top:"408",
 width:"199"
 },
 dataProviderID:"password",
@@ -426,7 +427,7 @@ typeid:47,
 uuid:"D49BD3C2-D59E-4B3F-BD5A-43258E25D477"
 },
 {
-cssPosition:"278,-1,-1,154,137,17",
+cssPosition:"252,-1,-1,154,137,17",
 formIndex:4,
 json:{
 cssPosition:{
@@ -434,7 +435,7 @@ bottom:"-1",
 height:"17",
 left:"154",
 right:"-1",
-top:"278",
+top:"252",
 width:"137"
 },
 formIndex:4,
@@ -448,15 +449,15 @@ typeid:47,
 uuid:"DA07AF7E-749E-48E8-AA86-42C37471464C"
 },
 {
-cssPosition:"156,141,-1,311,190,30",
+cssPosition:"130,139,-1,311,190,30",
 formIndex:3,
 json:{
 cssPosition:{
 bottom:"-1",
 height:"30",
 left:"311",
-right:"141",
-top:"156",
+right:"139",
+top:"130",
 width:"190"
 },
 dataProviderID:"registrationNumber",
@@ -468,7 +469,7 @@ typeid:47,
 uuid:"EDDF9A40-AF92-42E2-B508-96E87881C52D"
 },
 {
-cssPosition:"515,-1,-1,307,80,30",
+cssPosition:"485,-1,-1,307,80,30",
 formIndex:2,
 json:{
 cssPosition:{
@@ -476,10 +477,11 @@ bottom:"-1",
 height:"30",
 left:"307",
 right:"-1",
-top:"515",
+top:"485",
 width:"80"
 },
 formIndex:2,
+onActionMethodID:"99121EEB-E4F8-4409-A1E5-53546F09DA7A",
 text:"Reset"
 },
 name:"button_2",

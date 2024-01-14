@@ -52,3 +52,18 @@ function adminLogin(event) {
 	}
 
 }
+
+/**
+ * Callback method for when form is shown.
+ *
+ * @param {Boolean} firstShow form is shown first time after load
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @properties={typeid:24,uuid:"89CBE7D2-49FF-454B-8479-02F32FFE6381"}
+ */
+function onShow(firstShow, event) {
+	// TODO Auto-generated method stub
+	adminUsername = null;
+	adminPassword = null;
+	
+}
