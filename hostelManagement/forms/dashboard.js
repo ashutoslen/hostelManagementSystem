@@ -37,4 +37,74 @@ function onLoad(event) {
 	
 	elements.navbar.menuItems = menuItems;
 	
+	var menu = [{
+	    id: 1,
+	    text: "Dashboard",
+	    styleClass : "sn-large",
+	    iconStyleClass:  "fa fa-dashboard",
+		enabled: true
+	    //data: { description: "This is sample information that can be added to a menuItem" },
+//	    menuItems: [{
+//	  	  id: 5,
+//	  	  text: "Sub Item #1"
+//	  	}, {
+//	  	  id: 6,
+//	  	  text: "Sub Item #2"}]
+	  }, {
+	    id: 2,
+	    text: "Courses",
+		iconStyleClass:  "fa fa-file",
+	    menuItems: [{
+	  	  id: 7,
+	  	  text: "Add Courses",
+		  enabled: true
+	  	}, {
+	  	  id: 8,
+	  	  text: "Manage Courses",
+		  enabled: true}]
+		
+	  },{
+	   // isDivider: true
+	  },{
+	    id: 3,
+	    text: "Rooms",
+	    enabled: true,
+		iconStyleClass:  "fa fa-desktop",
+		menuItems: [{
+		  	  id: 9,
+		  	  text: "Add Rooms",
+			  enabled: true
+		  	}, {
+		  	  id: 10,
+		  	  text: "Manage Rooms",
+			  enabled: true}]
+	},
+	{
+		 	id: 4,
+		    text: "Student Registration",
+		    styleClass : "sn-large",
+		    iconStyleClass:  "fa fa-user",
+			enabled: true
+	},
+	{
+	 	id: 4,
+	    text: "Manage Students",
+	    styleClass : "sn-large",
+	    iconStyleClass:  "fa fa-users",
+		enabled: true
+	},
+	{
+	 	id: 4,
+	    text: "User Access Logs",
+	    styleClass : "sn-large",
+	    iconStyleClass:  "fa fa-file",
+		enabled: true
+	}
+	
+	];
+	
+	elements.sidenav.setRootMenuItems(menu);
+	
+	
+	
 }

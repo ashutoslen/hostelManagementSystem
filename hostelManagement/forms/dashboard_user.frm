@@ -3,11 +3,6 @@ useCssPosition:true",
 encapsulation:108,
 items:[
 {
-height:597,
-typeid:19,
-uuid:"B64F4720-BBB1-4CBF-9E49-B72213AF7437"
-},
-{
 cssPosition:"64,-1,-1,0,220,532",
 customProperties:"",
 json:{
@@ -27,27 +22,31 @@ y:179
 menu:[
 {
 enabled:true,
-iconStyleClass:"fa fa-dashboard",
-svyUUID:"94D76A8B-3DFA-4859-8C91-A016D6A5B5FB",
+svyUUID:"0A656BED-2DAA-4D52-BAD3-ED2D5774B724",
 text:"Dashboard"
 },
 {
-iconStyleClass:"fa fa-file",
-id:"courses",
-svyUUID:"DAF63FD0-DE0A-4F81-80FA-30CF0AEFEA3C",
-text:"Courses"
+enabled:true,
+svyUUID:"8F2516A3-E998-40B3-9951-CFA5262E7060",
+text:"Book Hostel"
 },
 {
-svyUUID:"9EC6A1C7-F26D-4AD3-B8A5-E8603E0FB9B9",
-text:"Student Registration"
+isDivider:false,
+svyUUID:"231540D9-8ED5-4249-ABE1-218CCEB825DD",
+text:"Room Details"
 },
 {
-svyUUID:"9483EBF0-D087-4593-A4E0-4F7DEC0A5B22",
-text:"Manage Students"
+svyUUID:"30893D1E-2214-442E-99F7-F5F06AFFA8DD",
+text:"My Profile"
 },
 {
-svyUUID:"22CEBBED-695E-4587-B66A-EE4E716CE3F4",
-text:"User Access Logs"
+enabled:false,
+svyUUID:"0612ABB1-01A8-488D-96E9-C275E7DB43B8",
+text:"Change Password"
+},
+{
+svyUUID:"85E7F540-EC99-4386-9397-79EDB5BAD947",
+text:"Access Logs"
 }
 ],
 onMenuItemSelected:null,
@@ -61,7 +60,7 @@ name:"sidenav",
 size:"260,300",
 typeName:"servoyextra-sidenav",
 typeid:47,
-uuid:"BE0C1F30-10DB-4C54-B5DD-5C94A1949CD9"
+uuid:"45A21863-A1DF-4D8A-BE54-B05BBA801A17"
 },
 {
 cssPosition:"3,-6,-1,2,0,61",
@@ -82,7 +81,7 @@ y:53
 },
 menuItems:[
 {
-svyUUID:"ABCF2611-704F-4744-97B0-CB59A225A312"
+svyUUID:"F80F089A-2174-4228-B089-FE722C2B11EB"
 }
 ],
 onMenuItemClicked:"A14E70AF-BF14-4610-BF58-59B6B6B45228",
@@ -98,13 +97,19 @@ size:"600,50",
 styleClass:"h2",
 typeName:"bootstrapextracomponents-navbar",
 typeid:47,
-uuid:"D2815406-C32C-4AC7-9F7C-6B040B36FDEF"
+uuid:"795EA181-443D-4B09-BAD3-FFE1CF043324"
+},
+{
+height:597,
+typeid:19,
+uuid:"FE728AD2-5272-4308-9476-B1178AD88D01"
 }
 ],
-name:"dashboard",
+name:"dashboard_user",
 navigatorID:"-1",
-onLoadMethodID:"9187DAE1-CC80-403D-B7E1-D2DC90A88D53",
+onLoadMethodID:"3FBE1E31-E56F-40CE-A1DF-A4C43390CB72",
+scrollbars:36,
 showInMenu:true,
 size:"790,597",
 typeid:3,
-uuid:"AF5E221D-EFC0-4FAD-B02B-57AC27FC24E8"
+uuid:"178E8217-EDBE-44C0-8EC5-D4E173067811"
