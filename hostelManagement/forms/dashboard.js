@@ -58,6 +58,7 @@ function onLoad(event) {
 	  	  id: 7,
 	  	  text: "Add Courses",
 		  enabled: true
+		  
 	  	}, {
 	  	  id: 8,
 	  	  text: "Manage Courses",
@@ -107,4 +108,25 @@ function onLoad(event) {
 	
 	
 	
+}
+
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param id
+ * @param event
+ *
+ * @properties={typeid:24,uuid:"6DFE1454-D4FB-4B0F-9D7B-73DB9855E743"}
+ */
+function onMenuItemSelectedHandler(id,event){
+	
+	if(id == 7){
+		elements.tabpanel_admin.tabIndex = 2;
+	}
+	else if(id == 8){
+		elements.tabpanel_admin.tabIndex = 3;
+	}
+	else{
+		elements.tabpanel_admin.tabIndex = 1;
+	}
 }
