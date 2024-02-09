@@ -1,6 +1,6 @@
 customProperties:"formComponent:false,\
 useCssPosition:true",
-encapsulation:108,
+encapsulation:78,
 items:[
 {
 cssPosition:"68,3,1,226,561,528",
@@ -25,6 +25,10 @@ svyUUID:"8220B1B3-07F3-40D0-87C0-44937AC813F5"
 {
 containedForm:"636898D0-8661-4DA0-940F-2A5454B3AA27",
 svyUUID:"7EA5F2E2-7AFE-4B15-92BB-86428A0F610A"
+},
+{
+containedForm:"490393AE-033A-406E-A850-877804117B26",
+svyUUID:"8DF7A9D2-0F2F-4A15-81FC-ECA6A19C5ECE"
 }
 ]
 },
