@@ -88,14 +88,14 @@ function onLoad(event) {
 			enabled: true
 	},
 	{
-	 	id: 4,
+	 	id: 5,
 	    text: "Manage Students",
 	    styleClass : "sn-large",
 	    iconStyleClass:  "fa fa-users",
 		enabled: true
 	},
 	{
-	 	id: 4,
+	 	id: 6,
 	    text: "User Access Logs",
 	    styleClass : "sn-large",
 	    iconStyleClass:  "fa fa-file",
@@ -131,6 +131,9 @@ function onMenuItemSelectedHandler(id,event){
 	}
 	else if(id == 10){
 		elements.tabpanel_admin.tabIndex = 6;
+	}
+	else if(id == 4){
+		elements.tabpanel_admin.tabIndex = 8;
 	}
 	else{
 		elements.tabpanel_admin.tabIndex = 1;

@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/hostel/rooms",
+items:[
+{foreignColumnName:"room_no",primaryDataProviderID:"scopes.globals.roomNo",typeid:23,uuid:"F6866625-FBDE-463F-91EE-1C2E94DB438F"}
+],
+joinType:1,
+name:"g_selected_room",
+primaryDataSource:"db:/hostel/rooms",
+typeid:22,
+uuid:"7B795AAE-E27F-4171-91E0-431D2220F40B"

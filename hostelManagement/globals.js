@@ -1,4 +1,11 @@
 /**
+ * @type {Number}
+ *
+ * @properties={typeid:35,uuid:"697C2BB8-5F71-461A-93D6-7EAA2FE9C4FA",variableType:4}
+ */
+var roomNo = null;
+
+/**
  * @properties={typeid:35,uuid:"B1FE2CA7-C06F-49CD-AAF9-99FD845921A3",variableType:-4}
  */
 var DEFAULT_NAVBAR_ACTIONS = {

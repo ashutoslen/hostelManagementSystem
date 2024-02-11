@@ -1,0 +1,12 @@
+addEmptyValue:1,
+customProperties:"lazyLoading:false",
+dataProviderID1:"room_no",
+dataSource:"db:/hostel/rooms",
+displayValueType:4,
+name:"room_val",
+realValueType:4,
+returnDataProviders:1,
+showDataProviders:1,
+typeid:34,
+uuid:"126F0A5F-4586-47DF-8CB5-D981BACC5BDA",
+valueListType:1

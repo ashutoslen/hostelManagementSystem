@@ -1,0 +1,9 @@
+addEmptyValue:1,
+customValues:"Without Food | 0\r\
+With Food(Rs 2000.00 Per Month Extra) | 1\r\
+",
+displayValueType:12,
+name:"foodStatus_val",
+realValueType:4,
+typeid:34,
+uuid:"6E5A641F-DE2C-43E9-B9FB-A15B1208B3E7"
