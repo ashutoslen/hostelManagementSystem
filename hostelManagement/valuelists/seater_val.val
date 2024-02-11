@@ -1,0 +1,11 @@
+addEmptyValue:1,
+customValues:"Single Seater|1\r\
+Two Seater|2\r\
+Three Seater|3\r\
+Four Seater |4\r\
+Five Seater|5",
+displayValueType:12,
+name:"seater_val",
+realValueType:4,
+typeid:34,
+uuid:"B49864A5-A374-4E6D-BA55-A818C809A8A6"
