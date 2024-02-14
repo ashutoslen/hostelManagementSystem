@@ -1,0 +1,12 @@
+addEmptyValue:1,
+customProperties:"lazyLoading:false",
+dataProviderID1:"course_fn",
+dataSource:"db:/hostel/courses",
+displayValueType:12,
+name:"course_val",
+realValueType:12,
+returnDataProviders:1,
+showDataProviders:1,
+typeid:34,
+uuid:"F06EE3EB-3429-4B48-B446-99A8F5C41ADD",
+valueListType:1
