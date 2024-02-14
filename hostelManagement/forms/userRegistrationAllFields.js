@@ -1,6 +1,41 @@
 /**
  * @type {Number}
  *
+ * @properties={typeid:35,uuid:"D53EA083-659D-4ED4-A587-4031626C1BF1",variableType:4}
+ */
+var corresPermanentSame = null;
+
+/**
+ * @type {Number}
+ *
+ * @properties={typeid:35,uuid:"ED3362A7-90F1-44C3-AB6B-6A3B727DB47D",variableType:4}
+ */
+var corressPin = null;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"5653230A-6FF7-41FC-8453-92F509F48AF6"}
+ */
+var corressState = null;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"C36D22B7-3005-4A43-B212-CD94114838C3"}
+ */
+var corressCity = null;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"D97A8DD4-25A6-41E7-906D-24B5E6702F22"}
+ */
+var corressAddress = null;
+
+/**
+ * @type {Number}
+ *
  * @properties={typeid:35,uuid:"3CA789C7-37D9-4D5A-BAE9-C0D74F4CDA46",variableType:4}
  */
 var guardianContactNo = null;
