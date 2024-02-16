@@ -1,14 +1,40 @@
 /**
- * @type {Number}
+ * @type {String}
+ * 
+ * @properties={typeid:35,uuid:"6FD9E0D9-9649-4C25-9291-903D48F63D6B"}
+ */
+var permPin = null;
+/**
+ * @type {String}
+ * 
+ * @properties={typeid:35,uuid:"991FC181-5DAD-4E22-A935-F6CA541CB2F5"}
+ */
+var permState = null;
+
+/**
+ * 
+ * @type {String}
+ * 
+ * @properties={typeid:35,uuid:"2700DDF8-8C29-4C34-A4D0-9A1E1AC7F956"}
+ */
+var permCity = null;
+/**
+ * @type {String}
+ * 
+ * @properties={typeid:35,uuid:"7592B3A5-681A-4F63-AD0A-378E979ECF6E"}
+ */
+var permAddress = null;
+/**
+ * @type {String}
  *
- * @properties={typeid:35,uuid:"D53EA083-659D-4ED4-A587-4031626C1BF1",variableType:4}
+ * @properties={typeid:35,uuid:"D53EA083-659D-4ED4-A587-4031626C1BF1"}
  */
 var corresPermanentSame = null;
 
 /**
- * @type {Number}
+ * @type {String}
  *
- * @properties={typeid:35,uuid:"ED3362A7-90F1-44C3-AB6B-6A3B727DB47D",variableType:4}
+ * @properties={typeid:35,uuid:"ED3362A7-90F1-44C3-AB6B-6A3B727DB47D"}
  */
 var corressPin = null;
 
@@ -34,9 +60,9 @@ var corressCity = null;
 var corressAddress = null;
 
 /**
- * @type {Number}
+ * @type {String}
  *
- * @properties={typeid:35,uuid:"3CA789C7-37D9-4D5A-BAE9-C0D74F4CDA46",variableType:4}
+ * @properties={typeid:35,uuid:"3CA789C7-37D9-4D5A-BAE9-C0D74F4CDA46"}
  */
 var guardianContactNo = null;
 
@@ -55,9 +81,9 @@ var guardianRelation = null;
 var guardianName = null;
 
 /**
- * @type {Number}
+ * @type {String}
  *
- * @properties={typeid:35,uuid:"32D1D1A8-1FA3-4B6D-BD84-28B4053C86D5",variableType:4}
+ * @properties={typeid:35,uuid:"32D1D1A8-1FA3-4B6D-BD84-28B4053C86D5"}
  */
 var emergencyContact = null;
 
@@ -69,9 +95,9 @@ var emergencyContact = null;
 var emailId = null;
 
 /**
- * @type {Number}
+ * @type {String}
  *
- * @properties={typeid:35,uuid:"D2CEE280-6955-42F2-A520-6034B3874041",variableType:4}
+ * @properties={typeid:35,uuid:"D2CEE280-6955-42F2-A520-6034B3874041"}
  */
 var contactNo = null;
 
@@ -104,9 +130,9 @@ var middleName = null;
 var firstName = null;
 
 /**
- * @type {Number}
+ * @type {String}
  *
- * @properties={typeid:35,uuid:"910582C2-F511-41C0-A298-2EA8D7657FA4",variableType:4}
+ * @properties={typeid:35,uuid:"910582C2-F511-41C0-A298-2EA8D7657FA4"}
  */
 var regno = null;
 
@@ -184,6 +210,292 @@ function onDataChangeRoomNo(oldValue, newValue, event) {
 	
 	
 	
+	
+	// TODO Auto-generated method stub
+	return true
+}
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param event
+ *
+ * @properties={typeid:24,uuid:"668C677E-ACB0-4420-9812-9D0C9FDC4303"}
+ */
+function registerUser(event) {
+	
+	
+	var validationMessage = null;
+	
+	if(!roomno){
+		
+		validationMessage = 'Room cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!course){
+		
+		validationMessage = 'Course cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!regno){
+		
+		validationMessage = 'Registration Number cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!firstName){
+		validationMessage = 'First Name cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+	}
+	
+	if(!lastName){
+		validationMessage = 'Last Name cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+	}
+	
+	if(!gender){
+		validationMessage = 'Gender cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+	}
+	
+	if(!contactNo){
+		validationMessage = 'Contact No cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+	}
+	
+	if(!emailId){
+		validationMessage = 'Email Id cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+	}
+	
+	var regEmail=/^[\w-\.\d*]+@[\w\d]+(\.\w{2,4})$/;	
+	var patt=new RegExp(regEmail);
+	if(patt.test(emailId)==false){
+		validationMessage = 'Email Id is not valid..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+	}
+	
+	if(!emergencyContact){
+		
+		validationMessage = 'Emergency Contact Number cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!guardianName){
+		
+		validationMessage = 'Guardian Name cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!guardianRelation){
+		
+		validationMessage = 'Guardian Relation cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!guardianContactNo){
+		
+		validationMessage = 'Guardian Contact No cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!corressAddress){
+		
+		validationMessage = 'Correspondence Address cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!corressCity){
+		
+		validationMessage = 'Correspondence City cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!corressState){
+		
+		validationMessage = 'Correspondence State cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!corressPin){
+		
+		validationMessage = 'Correspondence Pin cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	
+	if(!permAddress){
+		
+		validationMessage = 'Permanent Address cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!permCity){
+		
+		validationMessage = 'Permanent City cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!permState){
+		
+		validationMessage = 'Permanent State cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+	
+	if(!permPin){
+		
+		validationMessage = 'Permanent Pin cannot be Null..';
+		plugins.dialogs.showWarningDialog('Invalid Entry',validationMessage);
+		return;
+		
+	}
+
+	
+	/** @type {JSFoundset<db:/hostel/registration>} */
+	var userFS = databaseManager.getFoundSet('hostel','registration');
+	userFS.loadAllRecords();
+	
+	userFS.newRecord();
+	
+	userFS.roomno = roomno;
+	userFS.seater = seater;
+	userFS.feespm = feespm;
+	userFS.course = course;
+	userFS.regno = regno;
+	userFS.first_name = firstName;
+	userFS.middle_name = middleName;
+	userFS.last_name = lastName;
+	userFS.gender = gender;
+	userFS.contactno = contactNo;
+	userFS.email = emailId;
+	userFS.emergency_contact = emergencyContact;
+	userFS.guardian_name = guardianName;
+	userFS.guardian_relation = guardianRelation;
+	userFS.guardian_contactno = guardianContactNo;
+	userFS.corress_address = corressAddress;
+	userFS.coress_city = corressCity;
+	userFS.coress_state = corressState;
+	userFS.coress_pin = corressPin;
+	userFS.perm_address = permAddress;
+	userFS.perm_state = permState;
+	userFS.perm_city = permCity;
+	userFS.perm_pin = permPin;
+	userFS.posting_date = new Date();
+	
+	databaseManager.saveData(userFS.getSelectedRecord());
+	
+	plugins.dialogs.showInfoDialog('Success','Student has been successfully created !!.');
+	
+	onActionReset(event);
+
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param event
+ *
+ * @properties={typeid:24,uuid:"CD85ED4D-CBF6-4BE3-8BB5-210CCAAC179D"}
+ */
+function onActionReset(event){
+	
+	roomno = null;
+	seater = null;
+	feespm = null;
+	course = null;
+	regno = null;
+	firstName = null;
+	middleName = null;
+	lastName = null;
+	gender = null;
+	contactNo = null;
+	emailId = null;
+	emergencyContact = null;
+	guardianName = null;
+	guardianRelation = null;
+	guardianContactNo = null;
+	corressAddress = null;
+	corressCity = null;
+	corressState = null;
+	corressPin = null;
+	permAddress = null;
+	permCity = null;
+	permState = null;
+	permPin = null;
+	foodStatus = 0;
+	duration = null;
+	stayFrom = null;
+	corresPermanentSame = null;
+		
+}
+
+/**
+ * Callback method for when form is shown.
+ *
+ * @param {Boolean} firstShow form is shown first time after load
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @properties={typeid:24,uuid:"B9DA865E-BD0D-4ABC-AFD4-E6F9A633D566"}
+ */
+function onShow(firstShow, event) {
+	// TODO Auto-generated method stub
+	foodStatus = 0;
+}
+
+/**
+ * Handle changed data, return false if the value should not be accepted.
+ * JSEvent.data will contain extra information about dataproviderid, its scope and the scope id (record datasource or form/global variable scope)
+ *
+ * @param oldValue
+ * @param newValue
+ * @param {JSEvent} event
+ *
+ * @return {Boolean}
+ *
+ * @properties={typeid:24,uuid:"C96EFF0D-F39C-4C43-9A47-7AFCA13E9ABE"}
+ */
+function onDataChangeFillPerm(oldValue, newValue, event) {
+	
+	if(newValue == 1){
+		
+		permAddress = corressAddress;
+		permCity = corressCity;
+		permState = corressState;
+		permPin = corressPin;
+	}
 	
 	// TODO Auto-generated method stub
 	return true

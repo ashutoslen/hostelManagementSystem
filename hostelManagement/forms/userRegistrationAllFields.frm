@@ -117,7 +117,7 @@ right:"108",
 top:"1217",
 width:"292"
 },
-dataProviderID:"corressAddress",
+dataProviderID:"permAddress",
 formIndex:5
 },
 name:"textarea_2c",
@@ -356,7 +356,7 @@ top:"1454",
 width:"80"
 },
 formIndex:2,
-onActionMethodID:null,
+onActionMethodID:"CD85ED4D-CBF6-4BE3-8BB5-210CCAAC179D",
 text:"Reset"
 },
 name:"button_2",
@@ -377,7 +377,7 @@ top:"1454",
 width:"80"
 },
 formIndex:1,
-onActionMethodID:null,
+onActionMethodID:"668C677E-ACB0-4420-9812-9D0C9FDC4303",
 styleClass:"btn btn-primary",
 text:"Register"
 },
@@ -487,7 +487,7 @@ right:"108",
 top:"1389",
 width:"295"
 },
-dataProviderID:"corressState",
+dataProviderID:"permPin",
 formIndex:3
 },
 name:"textbox_1ccccccccccccccc",
@@ -678,7 +678,7 @@ right:"106",
 top:"1094",
 width:"281"
 },
-dataProviderID:"corressState",
+dataProviderID:"corressPin",
 formIndex:26
 },
 name:"textbox_1cccccccccccc",
@@ -853,7 +853,7 @@ right:"108",
 top:"1351",
 width:"281"
 },
-dataProviderID:"corressState",
+dataProviderID:"permState",
 formIndex:22
 },
 name:"textbox_1cccccccccccccc",
@@ -873,7 +873,7 @@ right:"108",
 top:"1314",
 width:"281"
 },
-dataProviderID:"corressCity",
+dataProviderID:"permCity",
 formIndex:14
 },
 name:"textbox_1ccccccccccccc",
@@ -1069,6 +1069,7 @@ width:"36"
 },
 dataProviderID:"corresPermanentSame",
 formIndex:13,
+onDataChangeMethodID:"C96EFF0D-F39C-4C43-9A47-7AFCA13E9ABE",
 text:null
 },
 name:"checkbox_3",
@@ -1354,6 +1355,7 @@ uuid:"F87253BF-702E-44DF-BE73-09DC2B58BBA9"
 }
 ],
 name:"userRegistrationAllFields",
+onShowMethodID:"B9DA865E-BD0D-4ABC-AFD4-E6F9A633D566",
 scrollbars:36,
 typeid:3,
 uuid:"862B4E29-A55A-4F88-8D27-651C01613704"
