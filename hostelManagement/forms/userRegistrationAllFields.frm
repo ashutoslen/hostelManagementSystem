@@ -635,11 +635,11 @@ right:"5",
 top:"75",
 width:"605"
 },
-styleClass:"panel-heading",
+styleClass:"panel-heading1",
 text:"FILL ALL INFO"
 },
 name:"label_7",
-styleClass:"panel-heading",
+styleClass:"panel-heading1",
 typeName:"bootstrapcomponents-label",
 typeid:47,
 uuid:"7498FF92-041C-452A-A35E-6DCA2E0D3908"

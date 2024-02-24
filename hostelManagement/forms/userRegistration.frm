@@ -295,11 +295,11 @@ right:"5",
 top:"75",
 width:"605"
 },
-styleClass:"panel-heading",
+styleClass:"panel-heading1",
 text:"FILL ALL INFO"
 },
 name:"label_7",
-styleClass:"panel-heading",
+styleClass:"panel-heading1",
 typeName:"bootstrapcomponents-label",
 typeid:47,
 uuid:"9D7F654D-3D60-458F-ABD7-5B41C397E44B"
