@@ -18,4 +18,25 @@ function onShow(firstShow, event) {
 	html = plugins.VelocityReport.renderTemplate("studentReportTemplate.html", context);
 	elements.label_bookedRoom.text = html;
 		
+	
+	// Set the default parameters for reports in a JavaScript parameter object, can be overridden individually:
+	// set the default date format and number format for all reports:
+	//var parameters = { dateFormat: "yyyy-MM-dd", numberFormat: "#.00" , timeFormat:"HH:MM:SS" };
+	//plugins.VelocityReport.setDefaultReportParameters(parameters);
 }
+
+ /**
+ * Click event. dataTarget parameter is used to identify inner html elements (by their data-target attribute).
+ *
+ * @param {JSEvent} event
+ * @param {String} dataTarget
+ *
+ * @properties={typeid:24,uuid:"2A8AB849-E133-4BE8-9A49-449F94CAB201"}
+ */
+function printReport(event, dataTarget) {
+	// TODO Auto-generated method stub
+	var context = { foundset: foundset};
+	plugins.VelocityReport.printReport("studentReportTemplate.html", context);
+ 
+}
+ 

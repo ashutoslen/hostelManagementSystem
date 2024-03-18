@@ -136,7 +136,7 @@ function onMenuItemSelectedHandler(id,event){
 		elements.tabpanel_admin.tabIndex = 8;
 	}
 	else if(id == 5){
-		elements.tabpanel_admin.tabIndex = 9;
+		elements.tabpanel_admin.tabIndex = 10;
 	}
 	else{
 		elements.tabpanel_admin.tabIndex = 1;

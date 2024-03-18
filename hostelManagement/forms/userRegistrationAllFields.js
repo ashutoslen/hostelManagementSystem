@@ -414,7 +414,10 @@ function registerUser(event) {
 	userFS.perm_state = permState;
 	userFS.perm_city = permCity;
 	userFS.perm_pin = permPin;
+	userFS.food_status = foodStatus;
 	userFS.posting_date = new Date();
+	userFS.stay_from = stayFrom;
+	userFS.duration = duration;
 	
 	databaseManager.saveData(userFS.getSelectedRecord());
 	
