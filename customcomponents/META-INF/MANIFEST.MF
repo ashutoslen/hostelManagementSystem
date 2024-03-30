@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-Name: customcomponents
+Bundle-SymbolicName: customcomponents
+Package-Type: Web-Component
+Bundle-Version: 1.0.0
+NPM-PackageName: customcomponents
+NG2-Module: customcomponentsModule
+Entry-Point: dist
+
+Name: DashboardCounters/DashboardCounters.spec
+Web-Component: True
+
+Name: test/test.spec
+Web-Component: True
+
