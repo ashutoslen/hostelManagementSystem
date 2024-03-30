@@ -4,6 +4,13 @@
 	<comment></comment>
 	<projects>
 		<project>resources</project>
+		<project>svyNavigation</project>
+		<project>svyNavigationUX</project>
+		<project>svyProperties</project>
+		<project>svySearch</project>
+		<project>svySecurity</project>
+		<project>svyUtils</project>
+		<project>customcomponents</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

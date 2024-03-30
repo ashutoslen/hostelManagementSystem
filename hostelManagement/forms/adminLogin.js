@@ -42,6 +42,19 @@ function adminLogin(event) {
 	}
 	
 	if((adminUsername == adminFS.username || adminUsername === adminFS.email) && adminPassword == adminFS.password){
+		
+		/** @type {JSFoundset<db:/hostel/adminlog>} */
+		var adminlogFS = databaseManager.getFoundSet('hostel','adminlog');
+		adminlogFS.loadAllRecords();
+		
+		adminlogFS.newRecord();
+		adminlogFS.admin_id = adminFS.admin_uuid;
+		adminlogFS.admin_email = adminFS.email;
+		adminlogFS.ip = application.getIPAddress();
+		adminlogFS.login_time = new Date();
+		
+		databaseManager.saveData(adminlogFS.getSelectedRecord());
+		
 		security.login(adminUsername,adminFS.email,['Administrators'])
 	}
 	else{

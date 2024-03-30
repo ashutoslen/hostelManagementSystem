@@ -3,6 +3,7 @@
 	<name>svySecurity</name>
 	<comment></comment>
 	<projects>
+		<project>svyProperties</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

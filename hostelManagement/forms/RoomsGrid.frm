@@ -1,7 +1,7 @@
 customProperties:"formComponent:false,\
 useCssPosition:true",
 dataSource:"db:/hostel/rooms",
-encapsulation:108,
+encapsulation:100,
 items:[
 {
 cssPosition:"138,5,3,0,853,339",

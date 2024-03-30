@@ -1,7 +1,7 @@
 customProperties:"formComponent:false,\
 useCssPosition:true",
 dataSource:"db:/hostel/registration",
-encapsulation:108,
+encapsulation:100,
 items:[
 {
 height:480,

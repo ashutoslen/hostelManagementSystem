@@ -3,6 +3,8 @@
 	<name>svyNavigationUX</name>
 	<comment></comment>
 	<projects>
+		<project>svyNavigation</project>
+		<project>svyUtils</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
