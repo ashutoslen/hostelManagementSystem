@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <div class="row">
 	
 		<div class="panel panel-default leftbox">
@@ -5,6 +6,11 @@
 						<div class="h1 stat-panel-number">{{students}}</div>
 						<div class="stat-panel-title text-uppercase">STUDENTS</div>
 						</div>
+						<div>
+							<div (click) = "studentsGo()" class="block-anchor panel-footer" >Full Detail <i class="fa fa-arrow-right"></i></div>
+							
+						</div>
+						
 		</div>
 		<div class="panel panel-default middlebox">
 						
@@ -12,11 +18,19 @@
 						<div class="h1 stat-panel-number">{{rooms}}</div>
 						<div class="stat-panel-title text-uppercase">TOTAL ROOMS</div>
 						</div>
+						<div>
+							<div (click) = "roomsGo()" class="block-anchor panel-footer">See All <i class="fa fa-arrow-right"></i></div>
+							
+						</div>
 		</div>
 		<div class="panel panel-default rightbox">
 						<div class="panel-body bk-info text-light">
 						<div class="h1 stat-panel-number">{{courses}}</div>
 						<div class="stat-panel-title text-uppercase">TOTAL COURSES</div>
+						</div>
+						<div>
+							<div (click) = "coursesGo()" class="block-anchor panel-footer">See All <i class="fa fa-arrow-right"></i></div>
+							
 						</div>
 		</div>
 	

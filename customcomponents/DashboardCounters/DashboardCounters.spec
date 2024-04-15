@@ -7,5 +7,7 @@
 	"model":
 	{
 		"students" : {"type": "dataprovider"},"rooms" : {"type": "dataprovider"},"courses" : {"type": "dataprovider"}
-	}
+		
+	},
+	"handlers": {"studentsGo": {  },"roomsGo": {  },"coursesGo": {  }}
 }

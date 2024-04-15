@@ -40,3 +40,30 @@ function onShow(firstShow, event) {
 	
 	
 }
+
+/**
+ * @properties={typeid:24,uuid:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8"}
+ */
+function studentsgo() {
+	// TODO Auto-generated method stub
+	application.output('students go');
+	forms.dashboard.elements.tabpanel_admin.tabIndex = 10;
+
+}
+
+/**
+ * @properties={typeid:24,uuid:"93122588-64D0-4476-817B-1DCA7FFA4E72"}
+ */
+function roomsgo() {
+	// TODO Auto-generated method stub
+	application.output('rooms go');
+	forms.dashboard.elements.tabpanel_admin.tabIndex = 6;
+}
+/**
+ * @properties={typeid:24,uuid:"9ECADFA4-8948-462F-811B-4706FC97554E"}
+ */
+function coursesgo() {
+	// TODO Auto-generated method stub
+	application.output('courses go');
+	forms.dashboard.elements.tabpanel_admin.tabIndex = 3;
+}

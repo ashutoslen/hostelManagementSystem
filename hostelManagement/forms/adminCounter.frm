@@ -6,7 +6,9 @@ items:[
 {
 cssPosition:"78,-1,-1,13,200,100",
 json:{
+click:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8",
 courses:"totalCourses",
+coursesGo:"9ECADFA4-8948-462F-811B-4706FC97554E",
 cssPosition:{
 bottom:"-1",
 height:"100",
@@ -16,7 +18,11 @@ top:"78",
 width:"200"
 },
 rooms:"totalRooms",
+roomsGo:"93122588-64D0-4476-817B-1DCA7FFA4E72",
+roomsgo:"93122588-64D0-4476-817B-1DCA7FFA4E72",
 students:"totalStudents",
+studentsGo:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8",
+studentsgo:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8",
 value:"totalStudents"
 },
 name:"dashboardcounters_1",
