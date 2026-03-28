@@ -1,66 +1,61 @@
-customProperties:"formComponent:false,\
-implicitSecurityNoRights:false,\
-useCssPosition:true",
-encapsulation:108,
-items:[
 {
-cssPosition:"78,-1,-1,13,200,100",
-json:{
-click:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8",
-courses:"totalCourses",
-coursesGo:"9ECADFA4-8948-462F-811B-4706FC97554E",
-cssPosition:{
-bottom:"-1",
-height:"100",
-left:"13",
-right:"-1",
-top:"78",
-width:"200"
-},
-rooms:"totalRooms",
-roomsGo:"93122588-64D0-4476-817B-1DCA7FFA4E72",
-roomsgo:"93122588-64D0-4476-817B-1DCA7FFA4E72",
-students:"totalStudents",
-studentsGo:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8",
-studentsgo:"514105F0-A0DD-47BB-9CA8-D8D773E4EFC8",
-value:"totalStudents"
-},
-name:"dashboardcounters_1",
-typeName:"customcomponents-Dashboard-Counters",
-typeid:47,
-uuid:"632B71A0-50D0-48F6-8683-0580D765883B"
-},
-{
-height:480,
-partType:5,
-typeid:19,
-uuid:"AC682225-3214-4A84-B7EC-9A04A8E1B1B2"
-},
-{
-cssPosition:"9,15,-1,28,650,52",
-json:{
-cssPosition:{
-bottom:"-1",
-height:"52",
-left:"28",
-right:"15",
-top:"9",
-width:"650"
-},
-styleClass:"page-title",
-text:"Dashboard"
-},
-name:"label_6",
-styleClass:"page-title",
-typeName:"bootstrapcomponents-label",
-typeid:47,
-uuid:"BEE473D7-5103-4598-86C8-C49B452CF1DA"
+    "customProperties":{
+        "formComponent":false,
+        "implicitSecurityNoRights":false,
+        "useCssPosition":true
+    },
+    "encapsulation":108,
+    "items":[
+        {
+            "cssPosition":"79,-1,-1,27,1000,100",
+            "json":{
+                "cssPosition":{
+                    "bottom":"-1",
+                    "height":"100",
+                    "left":"27",
+                    "right":"-1",
+                    "top":"79",
+                    "width":"1000"
+                }
+            },
+            "name":"counter_1",
+            "typeName":"counters-Counter",
+            "typeid":47,
+            "uuid":"5A9CF6E0-4825-47AB-8EAF-7214FE801727"
+        },
+        {
+            "height":480,
+            "partType":5,
+            "typeid":19,
+            "uuid":"AC682225-3214-4A84-B7EC-9A04A8E1B1B2"
+        },
+        {
+            "cssPosition":"9,15,-1,28,650,52",
+            "json":{
+                "cssPosition":{
+                    "bottom":"-1",
+                    "height":"52",
+                    "left":"28",
+                    "right":"15",
+                    "top":"9",
+                    "width":"650"
+                },
+                "styleClass":"page-title",
+                "text":"Dashboard"
+            },
+            "name":"label_6",
+            "styleClass":"page-title",
+            "typeName":"bootstrapcomponents-label",
+            "typeid":47,
+            "uuid":"BEE473D7-5103-4598-86C8-C49B452CF1DA"
+        }
+    ],
+    "name":"adminCounter",
+    "navigatorID":"-1",
+    "onShowMethodID":"7D7643D8-B776-4D0D-A406-0517910DBECC",
+    "scrollbars":32,
+    "showInMenu":true,
+    "size":"1005,480",
+    "typeid":3,
+    "uuid":"40C05122-7ADD-4911-A7F3-E84F02BB60FD"
 }
-],
-name:"adminCounter",
-navigatorID:"-1",
-onShowMethodID:"7D7643D8-B776-4D0D-A406-0517910DBECC",
-showInMenu:true,
-size:"1005,480",
-typeid:3,
-uuid:"40C05122-7ADD-4911-A7F3-E84F02BB60FD"

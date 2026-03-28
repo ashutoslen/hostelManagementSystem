@@ -26,30 +26,38 @@
 /**
  * @private
  *
- * @SuppressWarnings(unused)
- *
- * @properties={typeid:35,uuid:"45890609-A12D-49D1-A195-43BA3CAE4093",variableType:-4}
+ * @properties={"typeid":35,"uuid":"D7955198-B741-4E6D-8C28-44F45AD70816","variableType":-4}
  */
-var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.date');
+var log = application.getLogger('com.servoy.extensions.utils.svyDateUtils');
 
 /**
  * @type {java.time.ZoneId}
+ * @private
  *
- * @properties={typeid:35,uuid:"B5F1B378-17E1-4256-937E-F0F1731BF1EF",variableType:-4}
+ * @properties={"typeid":35,"uuid":"B5F1B378-17E1-4256-937E-F0F1731BF1EF","variableType":-4}
  */
 var zoneId = java.time.ZoneId.of(i18n.getCurrentTimeZone());
 
 /**
+ * @type {java.time.ZoneId}
+ * @private
+ * 
+ * @properties={"typeid":35,"uuid":"218C7CDA-A529-483E-807A-7949EA1E276E","variableType":-4}
+ */
+var systemZoneId = java.time.ZoneId.systemDefault();
+
+/**
  * @type {java.util.Locale}
+ * @private
  *
- * @properties={typeid:35,uuid:"62C21E71-5331-4505-AAFB-300638B843A1",variableType:-4}
+ * @properties={"typeid":35,"uuid":"62C21E71-5331-4505-AAFB-300638B843A1","variableType":-4}
  */
 var i18nLocale = new java.util.Locale(i18n.getCurrentLanguage(), i18n.getCurrentCountry());
 
 /**
  * @type {java.time.temporal.WeekFields}
  *
- * @properties={typeid:35,uuid:"8C19571F-18D1-42D5-83ED-5B1862C303A9",variableType:-4}
+ * @properties={"typeid":35,"uuid":"8C19571F-18D1-42D5-83ED-5B1862C303A9","variableType":-4}
  */
 var weekFields = java.time.temporal.WeekFields.of(i18nLocale);
 
@@ -60,7 +68,7 @@ var weekFields = java.time.temporal.WeekFields.of(i18nLocale);
  *
  * @final
  *
- * @properties={typeid:35,uuid:"C2C3D6C7-F9D0-4CAB-9EE4-DD6BDF728E5D",variableType:-4}
+ * @properties={"typeid":35,"uuid":"C2C3D6C7-F9D0-4CAB-9EE4-DD6BDF728E5D","variableType":-4}
  */
 var UNITS = {
 	HOUR: 100,
@@ -80,7 +88,7 @@ var UNITS = {
  *
  * @final
  *
- * @properties={typeid:35,uuid:"CD475D68-BDAC-436D-B9BB-5D7D9D957F3B",variableType:-4}
+ * @properties={"typeid":35,"uuid":"CD475D68-BDAC-436D-B9BB-5D7D9D957F3B","variableType":-4}
  */
 var DATE_FORMAT = {
 	SHORT: java.text.DateFormat.SHORT,
@@ -96,7 +104,7 @@ var DATE_FORMAT = {
  *
  * @type {Date}
  *
- * @properties={typeid:35,uuid:"05426994-8026-4634-8E03-5E12E69E3389",variableType:93}
+ * @properties={"typeid":35,"uuid":"05426994-8026-4634-8E03-5E12E69E3389","variableType":93}
  */
 var TODAY_START;
 
@@ -107,7 +115,7 @@ var TODAY_START;
  *
  * @type {Date}
  *
- * @properties={typeid:35,uuid:"CA8FCCDE-7FBA-4815-B3AB-AF736BA0E445",variableType:93}
+ * @properties={"typeid":35,"uuid":"CA8FCCDE-7FBA-4815-B3AB-AF736BA0E445","variableType":93}
  */
 var TODAY_END;
 
@@ -118,7 +126,7 @@ var TODAY_END;
  *
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"EDBB02A9-A782-415A-927B-D3B5BDE9BA55",variableType:-4}
+ * @properties={"typeid":35,"uuid":"EDBB02A9-A782-415A-927B-D3B5BDE9BA55","variableType":-4}
  */
 var initTodayVars = (function() {
 		setTodayVars();
@@ -157,7 +165,7 @@ function add(date, years, months, days, hours, minutes, seconds) {
 
 	/** @type {java.time.temporal.TemporalUnit} */
 	var unit 
-	var zonedDateTime = getLocalDateTimeFromDate(date).atZone(zoneId);
+	var zonedDateTime = getZonedDateTimeFromDate(date)
 	var instant = zonedDateTime.toInstant();
 	
 	if (hours) {
@@ -174,7 +182,7 @@ function add(date, years, months, days, hours, minutes, seconds) {
 	}
 	
 	// 
-	var result = new Date(instant.toEpochMilli());
+	var result = getDateFromZonedInstant(instant);
 	return getDateFromLocalDateTime(
 	getLocalDateTimeFromDate(result)
 			.plusYears(years)
@@ -356,7 +364,12 @@ function addBusinessDays(date, days, holidays) {
 	}
 
 	while (businessDaysAdded < numberOfDaysToAdd) {
-		currentDate = currentDate.plusDays(1);
+		if (days >= 0) {
+			currentDate = currentDate.plusDays(1);
+		} else {
+			currentDate = currentDate.minusDays(1);
+		}
+		
 		if (isWorkingDay(currentDate)) {
 			businessDaysAdded++;
 		}
@@ -379,13 +392,14 @@ function addBusinessDays(date, days, holidays) {
  * @properties={typeid:24,uuid:"DF5683B7-5B98-4425-A711-958D8CFDCAD7"}
  */
 function addHours(date, hours) {
-	var zonedDateTime = getLocalDateTimeFromDate(date).atZone(zoneId);
+	var zonedDateTime = getZonedDateTimeFromDate(date);
 	
 	/** @type {java.time.temporal.TemporalUnit} */
 	var unit = java.time.temporal.ChronoUnit.HOURS
 	var instant = zonedDateTime.toInstant();
 	instant = instant.plus(hours, unit);
-	return new Date(instant.toEpochMilli());
+	
+	return getDateFromZonedInstant(instant);
 }
 
 /**
@@ -403,13 +417,14 @@ function addHours(date, hours) {
  */
 function addMinutes(date, minutes) {
 	
-	var zonedDateTime = getLocalDateTimeFromDate(date).atZone(zoneId);
+	var zonedDateTime = getZonedDateTimeFromDate(date)
 	
 	/** @type {java.time.temporal.TemporalUnit} */
 	var unit = java.time.temporal.ChronoUnit.MINUTES
 	var instant =zonedDateTime.toInstant()
 	instant = instant.plus(minutes, unit);
-	return new Date(instant.toEpochMilli());
+	
+	return getDateFromZonedInstant(instant);
 }
 
 /**
@@ -426,13 +441,14 @@ function addMinutes(date, minutes) {
  * @properties={typeid:24,uuid:"520A2683-27A9-49BE-BC10-545E489A0E5F"}
  */
 function addSeconds(date, seconds) {
-	var zonedDateTime = getLocalDateTimeFromDate(date).atZone(zoneId);
+	var zonedDateTime = getZonedDateTimeFromDate(date)
 	
 	/** @type {java.time.temporal.TemporalUnit} */
 	var unit = java.time.temporal.ChronoUnit.SECONDS;
 	var instant =zonedDateTime.toInstant()
 	instant = instant.plus(seconds, unit);
-	return new Date(instant.toEpochMilli());
+	
+	return getDateFromZonedInstant(instant);
 }
 
 /**
@@ -480,7 +496,7 @@ function toStartOfDay(date) {
  * @properties={typeid:24,uuid:"177441D1-3D16-4948-86F8-059809A7ABF7"}
  */
 function toEndOfDay(date) {
-	date.setHours(23, 59, 59, 999);
+	date.setHours(23, 59, 59, 0);
 	return date;
 }
 
@@ -526,7 +542,7 @@ function createDateSearchString(start, end) {
  * @properties={typeid:24,uuid:"9BE1A5B5-7882-4E15-8EC7-2578F0C6AC81"}
  */
 function createDateFromWeekNumber(year, week) {
-	var localDate = getLocalDateTimeFromDate()
+	var localDate = getLocalDateFromDate().atStartOfDay()
 		.withYear(year)
 		.with(weekFields.weekOfYear(), week)
 		.with(weekFields.dayOfWeek(), 1);
@@ -596,7 +612,7 @@ function getDateDifference(start, end) {
 	var localDateStart = getLocalDateTimeFromDate(start);
 	var localDateEnd = getLocalDateTimeFromDate(end);
 
-	var difference = end.getTime() - start.getTime();
+	var difference = localDateEnd.atZone(zoneId).toInstant().toEpochMilli() - localDateStart.atZone(zoneId).toInstant().toEpochMilli(); 
 	var days = java.time.temporal.ChronoUnit.DAYS.between(localDateStart, localDateEnd);
 	var totalHours = java.time.temporal.ChronoUnit.HOURS.between(localDateStart, localDateEnd);
 	var totalMinutes = java.time.temporal.ChronoUnit.MINUTES.between(localDateStart, localDateEnd);
@@ -679,6 +695,25 @@ function getDayDifference(start, end) {
 }
 
 /**
+ * Returns the number of hours between the two dates
+ *
+ * @public
+ *
+ * @param {Date} start
+ * @param {Date} end
+ *
+ * @return {Number} hoursBetween
+ *
+ * @properties={typeid:24,uuid:"0E937316-44C3-4313-B589-1528CA7ABBB4"}
+ */
+function getHourDifference(start, end) {
+	var startLocalDateTime = getLocalDateTimeFromDate(start);
+	var endLocalDateTime = getLocalDateTimeFromDate(end);
+	var duration = java.time.Duration.between(startLocalDateTime, endLocalDateTime);
+	return duration.toHours();
+}
+
+/**
  * Returns the number of full months between the two dates
  *
  * @public
@@ -694,7 +729,7 @@ function getMonthDifference(start, end) {
 	var startLocalDateTime = getLocalDateFromDate(start);
 	var endLocalDateTime = getLocalDateFromDate(end);
 	var period = java.time.Period.between(startLocalDateTime, endLocalDateTime);
-	return period.getMonths();
+	return (period.getYears() * 12) + period.getMonths();
 }
 
 /**
@@ -1015,6 +1050,7 @@ function getFirstDayOfWeek(date) {
  * @properties={typeid:24,uuid:"71A159C0-D42F-478B-9D82-65DD96745D81"}
  */
 function getFirstDayOfMonth(date) {
+		
 	if (!date) {
 		date = new Date();
 	}
@@ -1213,7 +1249,7 @@ function getDecimalHours(date) {
 function DateTime(date) {
 
 	if (! (this instanceof DateTime)) {
-		log.warn("scopes.svyDateUtils.DateTime: Constructor functions should be called with the \"new\" keyword!");
+		log.warn.log("scopes.svyDateUtils.DateTime: Constructor functions should be called with the \"new\" keyword!");
 		return new DateTime(date)
 	}
 
@@ -1587,6 +1623,9 @@ function Duration(isNegative, weeks, days, hours, minutes, seconds) {
 	 */
 	this.duration = 0;
 	Object.defineProperty(this, 'duration', {
+			/**
+			 * @this {Duration}
+			 */
 			get: function() {
 				var duration = 0;
 				duration = this.weeks * 7 * 24 * 60 * 60 * 1000;
@@ -1596,6 +1635,9 @@ function Duration(isNegative, weeks, days, hours, minutes, seconds) {
 				duration += this.seconds * 1000;
 				return duration;
 			},
+			/**
+			 * @this {Duration}
+			 */
 			set: function(dur) {
 				var start = new Date();
 				var end = new Date(start.getTime() + dur);
@@ -1655,6 +1697,7 @@ function Duration(isNegative, weeks, days, hours, minutes, seconds) {
 	 * @return {String}
 	 */
 	this.getIso = function() {
+		/** @type {String} */
 		var result = '';
 		if (this.negative) {
 			result += '-';
@@ -1838,14 +1881,13 @@ function createOADateFromDate(date) {
  */
 function getLocalDateTime(date) {
 
-	if (!scopes.svySystem.isNGClient() && !scopes.svySystem.isTINGClient()) {
-		application.output("getLocalDateTime is an NG Client only method; returning the date as it is in the current client", LOGGINGLEVEL.WARNING)
-		return date;
-	}
-
-	// timezone offset between client & server
-	var diff = getLocalDateTimeOffset(date);
-	return scopes.svyDateUtils.addMinutes(date, diff);
+//	if (!scopes.svySystem.isNGClient() && !scopes.svySystem.isTINGClient()) {
+//		application.output("getLocalDateTime is an NG Client only method; returning the date as it is in the current client", LOGGINGLEVEL.WARNING)
+//		return date;
+//	}
+	
+	var localDateTime = java.time.Instant.ofEpochMilli(date.getTime()).atZone(zoneId).toLocalDateTime();
+	return new Date(localDateTime.atZone(systemZoneId).toInstant().toEpochMilli());
 }
 
 /**
@@ -1889,14 +1931,13 @@ function getLocalDateTime(date) {
  */
 function getServerDateTime(clientDate) {
 
-	if (!scopes.svySystem.isNGClient() && !scopes.svySystem.isTINGClient()) {
-		application.output("getServerDateTime is an NG Client only method; returning the date as it is in the current client", LOGGINGLEVEL.WARNING)
-		return clientDate;
-	}
-
-	// timezone offset between client & server
-	var diff = getLocalDateTimeOffset(clientDate);
-	return scopes.svyDateUtils.addMinutes(clientDate, -diff);
+//	if (!scopes.svySystem.isNGClient() && !scopes.svySystem.isTINGClient()) {
+//		application.output("getServerDateTime is an NG Client only method; returning the date as it is in the current client", LOGGINGLEVEL.WARNING)
+//		return clientDate;
+//	}
+	
+	var localDateTime = java.time.Instant.ofEpochMilli(clientDate.getTime()).atZone(systemZoneId).toLocalDateTime();
+	return new Date(localDateTime.atZone(zoneId).toInstant().toEpochMilli());
 }
 
 /**
@@ -1982,6 +2023,37 @@ function formatUsesLocalDateTime(format) {
 }
 
 /**
+ * @private 
+ * @param {java.time.Instant|java.time.temporal.Temporal} instant
+ * 
+ * @return {Date}
+ *
+ * @properties={typeid:24,uuid:"F1B0B7DF-0DE3-4B67-A522-285820D53116"}
+ */
+function getDateFromZonedInstant(instant) {
+	/** @type {java.time.Instant} */
+	var inst = instant;
+	var localDateTime = java.time.LocalDateTime.ofInstant(inst, zoneId);
+	return getDateFromLocalDateTime(localDateTime);
+}
+
+/**
+ * @private 
+ * @param {Date} [date]
+ * 
+ * @return {java.time.chrono.ChronoZonedDateTime}
+ *
+ * @properties={typeid:24,uuid:"BDD4F3FA-47C1-4827-906A-4BDEA5A6E1A9"}
+ */
+function getZonedDateTimeFromDate(date) {
+	if (!date) {
+		date = new Date();
+	}
+	
+	return java.time.Instant.ofEpochMilli(date.getTime()).atZone(systemZoneId).withZoneSameLocal(zoneId);
+}
+
+/**
  * Returns a LocalDateTime object from the given date or now
  *
  * @param {Date} [date]
@@ -1993,11 +2065,14 @@ function formatUsesLocalDateTime(format) {
  * @properties={typeid:24,uuid:"8ECE5B12-1705-4D16-B21B-65C91F9B2DC0"}
  */
 function getLocalDateFromDate(date) {
-	if (!date) {
-		return java.time.LocalDate.now(zoneId);
-	}
+		
+//	if (atSystemZone !== true) {
+//		// translate the date to the server offset. So when localOffset is applied, goes back to 0
+//		date = getServerDateTime(date);
+//	}
+	
 	/** @type {java.time.LocalDate} */
-	var result = java.time.Instant.ofEpochMilli(date.getTime()).atZone(zoneId).toLocalDate();
+	var result = getZonedDateTimeFromDate(date).toLocalDate();
 	return result;
 }
 
@@ -2013,11 +2088,14 @@ function getLocalDateFromDate(date) {
  * @properties={typeid:24,uuid:"3CC592DB-7E89-4DBC-91F1-99FD7C9B4850"}
  */
 function getLocalDateTimeFromDate(date) {
-	if (!date) {
-		return java.time.LocalDateTime.now(zoneId);
-	}
+	
+//	if (atSystemZone !== true) {
+//		// translate the date to the server offset. So there is no shift in time/date when local zone is applied
+//		date = getServerDateTime(date);
+//	}
+	
 	/** @type {java.time.LocalDateTime} */
-	var result = java.time.Instant.ofEpochMilli(date.getTime()).atZone(zoneId).toLocalDateTime();
+	var result = getZonedDateTimeFromDate(date).toLocalDateTime();
 	return result;
 }
 
@@ -2033,15 +2111,17 @@ function getLocalDateTimeFromDate(date) {
  * @properties={typeid:24,uuid:"F058D9D0-1180-47C9-8168-ACEBEE8F17E5"}
  */
 function getDateFromLocalDateTime(localDateTime) {
+		
 	if (!localDateTime) {
-		localDateTime = java.time.LocalDateTime.now(zoneId);
+		localDateTime = getZonedDateTimeFromDate().toLocalDateTime();
 	}
 	if (localDateTime instanceof java.time.LocalDate) {
 		/** @type {java.time.LocalDate} */
 		var localDate = localDateTime;
 		localDateTime = localDate.atStartOfDay();
 	}
-	return new Date(localDateTime.atZone(zoneId).toInstant().toEpochMilli());
+	var date = new Date(localDateTime.atZone(systemZoneId).toInstant().toEpochMilli());
+	return date;
 }
 
 /**

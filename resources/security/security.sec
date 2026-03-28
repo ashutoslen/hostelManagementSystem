@@ -1,7 +1,9 @@
-groups:[
-"Administrators"
-],
-usergroups:{
-
-},
-users:[]
+{
+    "groups":[
+        "Administrators"
+    ],
+    "usergroups":{
+        
+    },
+    "users":[]
+}

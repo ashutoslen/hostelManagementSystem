@@ -25,7 +25,7 @@
 
 /**
  * @private 
- * @properties={typeid:35,uuid:"09288A13-7587-40CD-B8DF-36AD6EEC8D34",variableType:-4}
+ * @properties={"typeid":35,"uuid":"09288A13-7587-40CD-B8DF-36AD6EEC8D34","variableType":-4}
  */
 var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.application.core');
 
@@ -33,7 +33,7 @@ var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.application.core'
  * @private
  * @type {Object}
  *
- * @properties={typeid:35,uuid:"8E4C4D0D-F783-47C5-A223-7114044680BE",variableType:-4}
+ * @properties={"typeid":35,"uuid":"8E4C4D0D-F783-47C5-A223-7114044680BE","variableType":-4}
  */
 var APPLICATION_EVENT_TYPES = {
 	DATABROADCAST: 'svy.databroadcast',
@@ -118,7 +118,7 @@ function initModules(startupArguments) {
 				scopes.svyEventManager.fireEvent(this, APPLICATION_EVENT_TYPES.MODULE_INITIALIZED, [form])
 				log.debug('Initialized module {} version {}', (form.getId() ? form.getId() : "[no ID provided for moduleDefinition \"" + moduleDefName + "\"]"), form.getVersion());
 			} catch(e) {
-				log.error("Error initializing module '{}'. Application may not function properly", moduleDefName, e)
+				log.error("Error initializing module '{}'. Application may not function properly.\n{}", moduleDefName, e)
 			}
 			stack.pop()
 			processed[moduleDefName] = null
@@ -244,8 +244,12 @@ function executeErrorHandlers(exception) {
  	}
 	try {
 		scopes.svyEventManager.fireEvent(this, APPLICATION_EVENT_TYPES.ERROR, arguments, true)		
-	} catch (e if e instanceof scopes.svyEventManager.VetoEventException) {
-		return false
+	} catch (e) {
+		if (e instanceof scopes.svyEventManager.VetoEventException) {
+			return false
+		} else {
+			throw e;
+		}
 	}
 	return true
 }
@@ -288,10 +292,12 @@ function onErrorHandler(e) {
  	var notHandled = true
 	try {
 		notHandled = executeErrorHandlers(e)
-	} catch (ex if ex instanceof scopes.svyEventManager.VetoEventException) {
-		notHandled = false
 	} catch (ex) {
-		e = ex
+		if (ex instanceof scopes.svyEventManager.VetoEventException) {
+			notHandled = false
+		} else {
+			e = ex
+		}
 	}
 	
 	if (notHandled === true && uncaughtExceptionCallback) {
@@ -310,7 +316,7 @@ function onErrorHandler(e) {
  * @private 
  * @type {String}
  *
- * @properties={typeid:35,uuid:"55550FAA-85A7-4A80-B99A-4C7FA2A7E552"}
+ * @properties={"typeid":35,"uuid":"55550FAA-85A7-4A80-B99A-4C7FA2A7E552"}
  */
 var uncaughtExceptionCallback = '';
 

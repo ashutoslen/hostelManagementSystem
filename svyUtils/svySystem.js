@@ -25,12 +25,10 @@
 
 /**
  * @private
- * 
- * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"2BBF34E6-2B0E-4C0E-8453-4A0530CEFC16",variableType:-4}
+ * @properties={"typeid":35,"uuid":"2BBF34E6-2B0E-4C0E-8453-4A0530CEFC16","variableType":-4}
  */
-var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.system');
+var log = application.getLogger('com.servoy.extensions.utils.svySystem');
 
 /**
  * Returns the platform specific line separator: \n on Unix systems and \r\n\ on Windows systems
@@ -39,7 +37,7 @@ var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.system');
  *  
  * @type {String}
  * 
- * @properties={typeid:35,uuid:"F50B6DEE-B591-4691-934C-64F76B86A9AC"}
+ * @properties={"typeid":35,"uuid":"F50B6DEE-B591-4691-934C-64F76B86A9AC"}
  */
 var LINE_SEPARATOR = Packages.java.lang.System.getProperty('line.separator');
 
@@ -100,8 +98,11 @@ function isNGClient() {
  * @public
  * 
  * @return {Boolean}
+ * 
+ * @deprecated 
  *  
  * @properties={typeid:24,uuid:"CA076FBF-D0BE-4C43-8264-0A9B87D52CC0"}
+ * @SuppressWarnings(deprecated)
  */
 function isWebClient() {
 	return application.getApplicationType() === APPLICATION_TYPES.WEB_CLIENT;
@@ -113,8 +114,11 @@ function isWebClient() {
  * @public
  * 
  * @return {Boolean}
+ * 
+ * @deprecated 
  *  
  * @properties={typeid:24,uuid:"F7529082-605B-4ADC-A010-84936034B364"}
+ * @SuppressWarnings(deprecated)
  */
 function isSmartClient() {
 	return application.getApplicationType() === APPLICATION_TYPES.SMART_CLIENT;
@@ -126,8 +130,11 @@ function isSmartClient() {
  * @public
  * 
  * @return {Boolean}
+ * 
+ * @deprecated 
  *  
  * @properties={typeid:24,uuid:"B37DF176-F87D-49EF-8558-BD6D993C1A8F"}
+ * @SuppressWarnings(deprecated)
  */
 function isRuntimeClient() {
 	return application.getApplicationType() === APPLICATION_TYPES.RUNTIME_CLIENT;
@@ -152,8 +159,12 @@ function isHeadlessClient(){
  * @public
  * 
  * @return {Boolean}
+ * 
+ * @deprecated 
+ * 
  *  
  * @properties={typeid:24,uuid:"C7915F79-3B6C-4F99-B898-D1287B6A7D36"}
+ * @SuppressWarnings(deprecated)
  */
 function isSwingClient() {
 	return [APPLICATION_TYPES.SMART_CLIENT, APPLICATION_TYPES.RUNTIME_CLIENT].indexOf(application.getApplicationType()) !== -1;
@@ -161,9 +172,15 @@ function isSwingClient() {
 
 /**
  * Returns true if the client is either a Headless, Web or NG Client, all of which execute their logic serverside
+ * 
  * @public 
+ * 
  * @return {Boolean}
+ * 
+ * @deprecated 
+ * 
  * @properties={typeid:24,uuid:"AB51A99C-5262-4CF4-B338-CE549D417683"}
+ * @SuppressWarnings(deprecated)
  */
 function isServersideClient() {
 	return [APPLICATION_TYPES.WEB_CLIENT, APPLICATION_TYPES.HEADLESS_CLIENT, APPLICATION_TYPES.NG_CLIENT].indexOf(application.getApplicationType()) !== -1;
@@ -231,12 +248,7 @@ function isLinuxPlatform() {
  * @properties={typeid:24,uuid:"00D7B1A3-72BF-4A1A-9994-133C8545DBCC"}
  */
 function isIOSPlatform() {
-	if ([APPLICATION_TYPES.WEB_CLIENT].indexOf(application.getApplicationType()) == -1) {
-		return false;
-	}
-	/** @type {Packages.org.apache.wicket.protocol.http.request.WebClientInfo} */
-	var clientInfo = Packages.org.apache.wicket.Session.get().getClientInfo();
-	var userAgent = clientInfo.getUserAgent();
+	var userAgent = plugins.ngclientutils.getUserAgent();
 	return /iPhone|iPad|iPod/.test(userAgent);
 }
 
@@ -250,13 +262,7 @@ function isIOSPlatform() {
  * @properties={typeid:24,uuid:"A3AEA4D4-DA10-4C6B-AC27-35E706C4ED75"}
  */
 function isAndroidPlatform() {
-	if ([APPLICATION_TYPES.WEB_CLIENT].indexOf(application.getApplicationType()) == -1) {
-		return false;
-	}
-	
-	/** @type {Packages.org.apache.wicket.protocol.http.request.WebClientInfo} */
-	var clientInfo = Packages.org.apache.wicket.Session.get().getClientInfo();
-	var userAgent = clientInfo.getUserAgent();
+	var userAgent = plugins.ngclientutils.getUserAgent();
 	return /Android/.test(userAgent);
 }
 
@@ -270,13 +276,7 @@ function isAndroidPlatform() {
  * @properties={typeid:24,uuid:"3B743FE3-088D-4754-BEDD-1A8FD059121A"}
  */
 function isMobilePlatform() {
-	if ([APPLICATION_TYPES.WEB_CLIENT].indexOf(application.getApplicationType()) == -1) {
-		return false;
-	}
-	
-	/** @type {Packages.org.apache.wicket.protocol.http.request.WebClientInfo} */
-	var clientInfo = Packages.org.apache.wicket.Session.get().getClientInfo();
-	var userAgent = clientInfo.getUserAgent();
+	var userAgent = plugins.ngclientutils.getUserAgent();
 	return /iPhone|iPad|iPod|Android/.test(userAgent);
 }
 
@@ -313,7 +313,7 @@ function getClientId() {
  *
  * @see http://www.oracle.com/technetwork/java/javase/versioning-naming-139433.html
  * 
- * @properties={typeid:35,uuid:"EE2F825B-3B91-407D-B3EF-AC686FD0451B",variableType:-4}
+ * @properties={"typeid":35,"uuid":"EE2F825B-3B91-407D-B3EF-AC686FD0451B","variableType":-4}
  */
 var javaVersionParseRegex = /^\d+\.(\d+)\.(\d+)_(\d+).*$/gm;
 
@@ -466,7 +466,7 @@ function getSolutionDeepLinkNGClient(solutionName, methodName, args) {
 			}
 		}
 	}
-	var link = application.getServerURL() + '/solutions/' + solutionName + '/index.html?';
+	var link = application.getServerURL() + 'solution' + (isTINGClient() ? '/' : 's/') + solutionName + '/index.html?';
 
 	if (params.length) {
 		link += params.join('&');
@@ -566,7 +566,7 @@ function getSystemProperties() {
  * 
  * @type {Array<RuntimeForm>}
  * 
- * @properties={typeid:35,uuid:"CB9D19C2-CD8D-4654-A193-95E83848E4AC",variableType:-4}
+ * @properties={"typeid":35,"uuid":"CB9D19C2-CD8D-4654-A193-95E83848E4AC","variableType":-4}
  */
 var persistentForms = [];
 
@@ -699,7 +699,7 @@ function convertServoyMethodToQualifiedName(method) {
 				return null;
 			}
 		} catch (e) {
-			log.warn(e.message);
+			log.warn.log(e.message);
 			return null;
 		}
 	}

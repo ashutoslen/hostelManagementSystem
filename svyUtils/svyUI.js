@@ -31,11 +31,9 @@
 /**
  * @private
  * 
- * @SuppressWarnings(unused)
- * 
- * @properties={typeid:35,uuid:"7C41BEF4-1A96-499B-8851-43A9A9B31E85",variableType:-4}
+ * @properties={"typeid":35,"uuid":"7C41BEF4-1A96-499B-8851-43A9A9B31E85","variableType":-4}
  */
-var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.ui');
+var log = application.getLogger('com.servoy.extensions.utils.svyUI');
 
 /**
  * @deprecated
@@ -254,7 +252,7 @@ function getRuntimeFormInstances(superForm){
 		if (form) {
 			runtimeInstances.push(form);
 		} else {
-			log.warn('Unexpected untime form not found by getRuntimeFormInstances: ' + formName);
+			log.warn.log('Unexpected untime form not found by getRuntimeFormInstances: ' + formName);
 		}
 	}
 	
@@ -309,9 +307,13 @@ function getElementsByDesigntimeProperty(form, propertyName, propertyValue, incl
  * @param {JSForm|RuntimeForm|String} form the form on which the element is located
  * @param {JSComponent|RuntimeComponent|String} element the element to get the labelFor label for
  * 
- * @return {Array<JSLabel>} labelFor elements
+ * @return {Array} labelFor elements
+ * 
+ * @deprecated method targets labels of fields in a smart client table view form which is no longer supported
  *
  * @properties={typeid:24,uuid:"6D69CB0F-0EC9-49BB-9FDE-FA69DCC8A1C7"}
+ * 
+ * @SuppressWarnings(deprecated)
  */
 function getLabelForElements(form, element) {
 	/** @type {JSForm} */
@@ -408,14 +410,18 @@ function getJSFormHeight(form, includePrintParts) {
 }
 
 /**
- * Gets the row height of a table view at runtime
+ * Gets the row height of a smart client table view at runtime
  * 
  * @public
  * 
  * @param {JSForm|RuntimeForm|String} form identifier of or reference to a form in TableView view
  * 
+ * @deprecated as smart client is no longer available
+ * 
  * @return {Number}
  *
+ * @SuppressWarnings(deprecated)
+ * 
  * @properties={typeid:24,uuid:"53065728-B0C1-449C-91A4-D79B2271723A"}
  */
 function getRuntimeTableViewRowHeight(form) {
@@ -456,9 +462,12 @@ function getRuntimeTableViewRowHeight(form) {
  * 
  * @param {Boolean} state
  * 
+ * @deprecated 
+ * 
  * @see Also see {@link #plugins#window#setToolBarAreaVisible()}: hides/shows the entire toolbar area
  *
  * @properties={typeid:24,uuid:"BF888281-F9E0-4907-89FD-ECAAA037C4CB"}
+ * @SuppressWarnings(deprecated)
  */
 function setAllToolbarsVisibility(state) {
 	if (application.getApplicationType() === APPLICATION_TYPES.SMART_CLIENT) {
@@ -527,9 +536,13 @@ function getParentFormNameInstanceOf(form, formInstance) {
  * 
  * @return {JSForm} The clone
  * 
+ * @deprecated as this method deals with smart client tab panels which are no longer available
+ * 
  * @throws {scopes.svyExceptions.IllegalArgumentException}
  * 
  * @properties={typeid:24,uuid:"0B4DE5CF-0B58-44F2-B344-3E3B656E549D"}
+ * 
+ * @SuppressWarnings(deprecated)
  */
 function deepCopyJSForm(newFormName, original, prefix) {
 	if (solutionModel.getForm(newFormName)) {
@@ -622,7 +635,7 @@ function initSplitPane(formName, elementName, resizeWeight, dividerLocation, div
  */
 function persistSplitPaneDividerPosition(formName, elementName) {
 	if (!formName || !elementName) {
-		log.error('persistSplitPaneDividerPosition called without mandatory params');
+		log.error.log('persistSplitPaneDividerPosition called without mandatory params');
 		return;
 	}
 	var pos = forms[formName].elements[elementName].dividerLocation;
@@ -646,7 +659,7 @@ function persistSplitPaneDividerPosition(formName, elementName) {
  */
 function restoreSplitPaneDividerPosition(formName, elementName, position) {
 	if (!formName || !elementName) {
-		log.error('restoreSplitPaneDividerPosition called without mandatory params');
+		log.error.log('restoreSplitPaneDividerPosition called without mandatory params');
 		return;
 	}
 	/** @type {String} */
@@ -790,7 +803,7 @@ function RuntimeElementSource(formName, elementName) {
 
 /**
  * @since 2019-01-05
- * @constructor
+ * @parse
  * @private 
  * @properties={typeid:24,uuid:"76C229C0-5569-4D03-BDB0-243AB6CC01F1"}
  */
@@ -830,7 +843,7 @@ function setupRuntimeElementSource() {
 		if (name && form) {
 			/** @type {RuntimeTextField} */
 			var component = form.elements[name];
-			if (component.getDataProviderID) {
+			if (component.getDataProviderID && component.getDataProviderID()) {
 				var dataProvider = component.getDataProviderID();
 				
 				// TODO should i really look into special components such as listcomponent etc.. !?
@@ -884,19 +897,49 @@ function setupRuntimeElementSource() {
 		
 	    /** @type {JSFoundSet} */
 	    var fs;
-		var relationName = this.getRelationName(form, elementName);
-		if (relationName) {
-			/** @type {JSFoundSet} */
-			fs = form.foundset[relationName];
+	    //First check if it is a component that can have a linked foundset
+	    /** @type {Object} */
+		var component = form.elements[elementName];
+		if (component.hasOwnProperty('myFoundset')) {
+			return component['myFoundset'].foundset.getSelectedRecord();
 		} else {
-			fs = form.foundset;
+			var relationName = this.getRelationName();
+			if (relationName) {
+				/** @type {JSFoundSet} */
+				fs = form.foundset[relationName];
+			} else {
+				fs = form.foundset;
+			}
+					
+		    if (fs) {
+		        return fs.getSelectedRecord();
+		    }
 		}
-				
-	    if (fs) {
-	        return fs.getSelectedRecord();
-	    }
 	    return null;
 	}
+}
+
+/**
+ * Get the title of a database column, returns the column name if the title is empty.
+ * 
+ * @public 
+ *
+ * @param {String} datasource
+ * @param {String} dataproviderName
+ *
+ * @return {String}
+ * 
+ * @properties={typeid:24,uuid:"ED42DD67-F645-471F-A0E4-E4999A633C8A"}
+ */
+function getColumnTitle(datasource, dataproviderName) {
+
+	var split = dataproviderName.split('.');
+	var dataprovider = split.pop();
+	var datasourceTarget = (split.length > 0 ? solutionModel.getRelation(split.pop()).foreignDataSource : datasource);
+	var column = databaseManager.getTable(datasourceTarget).getColumn(dataprovider);
+	var columnTitle = (column !== null ? column.getTitle() : utils.stringInitCap(dataprovider));
+
+	return columnTitle;
 }
 
 /**
@@ -904,7 +947,7 @@ function setupRuntimeElementSource() {
  * NOTE: This var must remain at the BOTTOM of the file.
  * @private 
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"C46DF3A7-19AE-40C2-B9E7-853679258556",variableType:-4}
+ * @properties={"typeid":35,"uuid":"C46DF3A7-19AE-40C2-B9E7-853679258556","variableType":-4}
  */
 var init = (function() {
 	setupRuntimeElementSource();

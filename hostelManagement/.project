@@ -10,7 +10,7 @@
 		<project>svySearch</project>
 		<project>svySecurity</project>
 		<project>svyUtils</project>
-		<project>customcomponents</project>
+		<project>counters</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

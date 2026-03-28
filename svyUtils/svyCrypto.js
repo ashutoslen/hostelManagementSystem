@@ -24,22 +24,13 @@
  */
 
 /**
- * @private
- * 
- * @SuppressWarnings(unused)
- * 
- * @properties={typeid:35,uuid:"25729878-C7ED-4A75-8151-80BDFA9C71C2",variableType:-4}
- */
-var log = scopes.svyLogManager.getLogger('com.servoy.bap.svyCrypto');
-
-/**
  * Supported algorithms
  * 
  * @public
  * 
  * @enum
  *  
- * @properties={typeid:35,uuid:"E2451988-579B-49F0-81C6-ECB6843D26FD",variableType:-4}
+ * @properties={"typeid":35,"uuid":"E2451988-579B-49F0-81C6-ECB6843D26FD","variableType":-4}
  */
 var ALGORITHM_NAMES = {
 	AES: 'AES',
@@ -55,12 +46,13 @@ var ALGORITHM_NAMES = {
  *  
  * @see getHash
  * 
- * @properties={typeid:35,uuid:"D6259ED3-FB2A-4DB7-A5CF-F377457184EE",variableType:-4}
+ * @properties={"typeid":35,"uuid":"D6259ED3-FB2A-4DB7-A5CF-F377457184EE","variableType":-4}
  */
 var HASH_ALGORITHM_NAMES = {
 	MD5: 'MD5',
 	SHA_1: 'SHA-1',
-	SHA_256: 'SHA-256'
+	SHA_256: 'SHA-256',
+	SHA_384: 'SHA-384'
 };
 
 /**
@@ -68,7 +60,7 @@ var HASH_ALGORITHM_NAMES = {
  * 
  * @private
  * 
- * @properties={typeid:35,uuid:"188CE9F7-1FD1-4ADB-87B2-E78D926C9678",variableType:-4}
+ * @properties={"typeid":35,"uuid":"188CE9F7-1FD1-4ADB-87B2-E78D926C9678","variableType":-4}
  */
 var INTERNAL_KEYS = {
 	AES: 'Hheq+OO753QxiBwUvf0ROQ==',
@@ -78,7 +70,7 @@ var INTERNAL_KEYS = {
 /**
  * @private
  * 
- * @properties={typeid:35,uuid:"A79A63EA-B556-408A-A499-5D64ED5D1D17",variableType:-4}
+ * @properties={"typeid":35,"uuid":"A79A63EA-B556-408A-A499-5D64ED5D1D17","variableType":-4}
  */
 var PBE_DEFAULTS = {
 	iterations: 65536,
@@ -161,7 +153,9 @@ function decrypt(value, options, secretPassPhrase, iv) {
  * @properties={typeid:24,uuid:"91C2BABC-2E7C-496A-A324-72B3014F81CA"}
  */
 function decryptAsString(message, options, secretPassPhrase, iv) {
-	return new java.lang.String(decrypt(message, options, secretPassPhrase,  iv)).toString();
+	/** @type {String} */
+	var result = new java.lang.String(decrypt(message, options, secretPassPhrase,  iv)).toString();
+	return result;
 }
 
 /**
@@ -584,7 +578,9 @@ function EncryptionOptions() {
  * @properties={typeid:24,uuid:"73E8A428-BFE1-4B3B-9A8E-2D29645F7B8B"}
  */
 function string2Bytes(str) {
-	return new java.lang.String(str).getBytes();
+	/** @type {Array<byte>} */
+	var bytes = new java.lang.String(str).getBytes();
+	return bytes;
 }
 
 /**
@@ -631,7 +627,7 @@ function getCipher(options) {
  * @public
  * 
  * @param {String|Array<byte>} value The string or bytes to hash
- * @param {String} algorithm Supported hash algorithms: [MD5,SHA-1,SHA-256]
+ * @param {String} algorithm Supported hash algorithms: [MD5,SHA-1,SHA-256,SHA_384]
  * 
  * @return {String} The hashed bytes in Base-64 encoded string
  *
@@ -656,7 +652,7 @@ function getHash(value, algorithm) {
  * @properties={typeid:24,uuid:"18C4993F-CDE6-412A-A735-1BEB18AF8405"}
  */
 function getMD5(value) {
-	return getHash(value, 'MD5');
+	return getHash(value, HASH_ALGORITHM_NAMES.MD5);
 }
 
 /**
@@ -671,7 +667,7 @@ function getMD5(value) {
  * @properties={typeid:24,uuid:"579860FF-5364-4857-9BFB-A12303F39775"}
  */
 function getSHA1(value) {
-	return getHash(value, 'SHA-1');
+	return getHash(value, HASH_ALGORITHM_NAMES.SHA_1);
 }
 
 /**
@@ -686,5 +682,35 @@ function getSHA1(value) {
  * @properties={typeid:24,uuid:"675B518E-31CF-4BCE-99F1-ADB40997870D"}
  */
 function getSHA256(value) {
-	return getHash(value, 'SHA-256');
+	return getHash(value, HASH_ALGORITHM_NAMES.SHA_256);
+}
+
+/**
+ * Converts a string or byte array to a hashed message using SHA-384
+ * 
+ * @public
+ * 
+ * @param {String|Array<byte>} value The string or bytes to hash
+ * 
+ * @return {String} The hashed bytes in Base-64 encoded string
+ * 
+ * @properties={typeid:24,uuid:"BFA62842-DFCF-4331-946B-2C266BFD8E8F"}
+ */
+function getSHA384(value) {
+	return getHash(value, HASH_ALGORITHM_NAMES.SHA_384);
+}
+
+/**
+ * Converts a string or byte array to a hex using SHA-256
+ * 
+ * @public
+ * 
+ * @param {String|Array<byte>} value The string or bytes to hash
+ * 
+ * @return {String} The hashed bytes in Base-64 encoded string
+ * 
+ * @properties={typeid:24,uuid:"2C0DB669-725F-47D1-A5D4-CD59C11AF446"}
+ */
+function getSHA256Hex(value) {
+	return Packages.org.apache.commons.codec.digest.DigestUtils.sha256Hex(value)	
 }

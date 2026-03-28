@@ -34,9 +34,9 @@
 /**
  * @private 
  *
- * @properties={typeid:35,uuid:"CB850A67-F8C0-4C1A-A55B-302810E36FA9",variableType:-4}
+ * @properties={"typeid":35,"uuid":"CB850A67-F8C0-4C1A-A55B-302810E36FA9","variableType":-4}
  */
-var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.exceptions');
+var log = application.getLogger('com.servoy.extensions.utils.svyExceptions');
 
 /**
  * General exception holding exception message, i18n key and arguments
@@ -53,7 +53,7 @@ var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.exceptions');
  */
 function SvyException(errorMessage) {
 	if (!(this instanceof SvyException)) {
-		log.error('SvyException subclass called without the \'new\' keyword')
+		log.error.log('SvyException subclass called without the \'new\' keyword')
 	}
 	this.message = errorMessage.substr(0,5) === 'i18n:' ? i18n.getI18NMessage(errorMessage) : errorMessage
 	this.name = this.constructor['name']
@@ -173,12 +173,12 @@ function ServoyError(exception) {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"36364157-A05A-4806-B13E-DA08DD8C27D6",variableType:-4}
+ * @properties={"typeid":35,"uuid":"36364157-A05A-4806-B13E-DA08DD8C27D6","variableType":-4}
  */
 var init = (
 	/** @constructor */ 
 	function() {
-		SvyException.prototype = new Error();
+		SvyException.prototype = Object.create(Error.prototype)
 		SvyException.prototype.constructor = SvyException
 		
 		/**
@@ -207,6 +207,9 @@ var init = (
 		ServoyError.prototype.constructor = ServoyError
 		
 		Object.defineProperty(ServoyError.prototype, 'stack', {
+			/**
+			 * @this {ServoyError}
+			 */
 			get: function() {
 				if (typeof this.ex.getScriptStackTrace === 'function') {
 					return this.ex.getScriptStackTrace()

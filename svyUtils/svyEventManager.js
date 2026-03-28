@@ -68,7 +68,7 @@
  * 
  * @SuppressWarnings(unused)
  * 
- * @properties={typeid:35,uuid:"BAD462CD-2C90-491E-AAFC-765DAF09E5E9",variableType:-4}
+ * @properties={"typeid":35,"uuid":"BAD462CD-2C90-491E-AAFC-765DAF09E5E9","variableType":-4}
  */
 var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.eventmanager');
 
@@ -77,9 +77,20 @@ var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.eventmanager');
  * 
  * @type {Object<Object<Array<String>>>}
  *
- * @properties={typeid:35,uuid:"0FE5A45F-B494-49C8-9080-A51DCEDF3F5F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"0FE5A45F-B494-49C8-9080-A51DCEDF3F5F","variableType":-4}
  */
 var events = {};
+
+/**
+ * @enum 
+ * @public
+ * @properties={"typeid":35,"uuid":"8A303D80-8C93-45CD-9C9C-2021F0CA47A7","variableType":-4}
+ */
+var AGGREGATE_TYPE = {
+	ARRAY: 'array',
+	BOOLEAN: 'boolean',
+	NUMBER: 'number'
+};
 
 /**
  * @private
@@ -118,7 +129,8 @@ function convertObjectToString(obj) {
 					(objStringParts[1] in forms && forms[objStringParts[1]][objStringParts[2]]) ||
 						(
 							(
-								objStringParts[2] == 'elements' && (solutionModel.getForm(objStringParts[1]).getComponent(objStringParts[3]) || solutionModel.getForm(objStringParts[1]).getBean(objStringParts[3])) || 
+								objStringParts[2] == 'elements' && 
+								solutionModel.getForm(objStringParts[1]).getComponent(objStringParts[3]) || 
 								solutionModel.getForm(objStringParts[1]).getMethod(objStringParts[2]) ||
 								solutionModel.getForm(objStringParts[1]).getVariable(objStringParts[2])
 							)
@@ -311,7 +323,10 @@ function hasListeners(obj, eventType) {
  * @param {String} eventType The event identifier
  * @param {*|Array<*>} [args] A value, an Array of values or an arguments object to apply as arguments to the eventHandler invocation
  * @param {Boolean} [isVetoable] Optionally specify if an event can be vetoed. A listener may veto an event by throwing a {@link #VetoEventException}. Subsequent propagation of the event is then cancelled
- *
+ * @param {String} [returnValueAggregationType] Optionally specify aggregation type for the return value;
+ * 
+ * @return {Boolean|Number|Array} the aggregated return value if returnValueAggregationType is set
+ * 
  * @example <pre> //Example of using the Event class to fire an Event
  * var EVENT_TYPES = {
  * 	MY_OWN_EVENT_TYPE: 'myOwnEventType'
@@ -322,7 +337,23 @@ function hasListeners(obj, eventType) {
  *
  * @properties={typeid:24,uuid:"06FDBBB0-D4AF-48E1-BE0F-858BC089D977"}
  */
-function fireEvent(obj, eventType, args, isVetoable) {
+function fireEvent(obj, eventType, args, isVetoable, returnValueAggregationType) {
+	
+	var returnValue;
+	switch (returnValueAggregationType) {
+	case AGGREGATE_TYPE.ARRAY:
+		returnValue = [];
+		break;
+	case AGGREGATE_TYPE.NUMBER:
+		returnValue = 0;
+		break;
+	case AGGREGATE_TYPE.BOOLEAN:
+		returnValue = true;
+		break;
+	default:
+		break;
+	}
+	
 	var objectString = convertObjectToString(obj);
 	if (objectString && events) {
 		var evtel = events[objectString];
@@ -355,17 +386,64 @@ function fireEvent(obj, eventType, args, isVetoable) {
 					if (!(isVetoable === true)) {
 						//Firing of listeners of non-vetoable events are wrapped in try/catch to throw an UnsupportedOperationException when a listener throws a VetoEventException anyway
 						try {
-							scope[actionStringParts[2]].apply(scope, args);
-						} catch (e if e instanceof VetoEventException) { //Conditional catch introduced as a fix for SVYUTILS-2 works in Gecko based engines and Rhino
-							throw scopes.svyExceptions.UnsupportedOperationException('Attempt made to veto a non-vetoable event');
+							aggregateResult(scope[actionStringParts[2]].apply(scope, args));
+						} catch (e) { //Conditional catch introduced as a fix for SVYUTILS-2 works in Gecko based engines and Rhino
+
+							// log actual error with stack trace
+							var errObj = {
+								err: e.toString(),
+								func: curel[act],
+								type: eventType
+							}
+							
+							log.error(utils.stringReplaceTags('FireEvent %%type%% failed exexuting apply on function: %%func%% \n%%err%%', errObj));
+							
+							if (e instanceof VetoEventException) {
+								throw scopes.svyExceptions.UnsupportedOperationException('Attempt made to veto a non-vetoable event');
+							} else {
+								throw e;
+							}
 						}
 					} else { //Not wrapping calling of listeners on vetoable events in try/catch to prevent the try/catch overhead
-						scope[actionStringParts[2]].apply(scope, args);
+						aggregateResult(scope[actionStringParts[2]].apply(scope, args));
 					}
 				}
 			}
 		}
 	}
+	
+	/** 
+	 * @param {Boolean|Array|Number} value
+	 * @private  */
+	function aggregateResult(value) {
+		if (returnValueAggregationType) {
+			switch (returnValueAggregationType) {
+			case AGGREGATE_TYPE.ARRAY:
+				// concatenate the value to the returnValue
+				if (value && value instanceof Array) {
+					var arrayReturnValue = [];
+					returnValue = arrayReturnValue.concat(value);
+				}
+				break;
+			case AGGREGATE_TYPE.NUMBER:
+				// sum the number
+				if (value && !isNaN(value)) {
+					returnValue += value;
+				}
+				break;
+			case AGGREGATE_TYPE.BOOLEAN:
+				// value should be true or false
+				if (value == true || value == false) {
+					returnValue = returnValue && value;
+				}
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	
+	return returnValue;
 }
 
 /**
@@ -500,7 +578,7 @@ function VetoEventException(message) {
  * 
  * @SuppressWarnings(unused)
  * 
- * @properties={typeid:35,uuid:"01D1168C-2619-4128-AABB-1B0D076C6E92",variableType:-4}
+ * @properties={"typeid":35,"uuid":"01D1168C-2619-4128-AABB-1B0D076C6E92","variableType":-4}
  */
 var init = (function(){
 	VetoEventException.prototype = Object.create(scopes.svyExceptions.SvyException.prototype);

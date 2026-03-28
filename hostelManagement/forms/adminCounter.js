@@ -30,6 +30,7 @@ function onShow(firstShow, event) {
 	// TODO Auto-generated method stub
 	
 	totalStudents = databaseManager.getTableCount(forms.registeredStudentsGrid.foundset);
+	elements.counter_1.totalStudents = totalStudents
 	application.output(totalStudents);
 	
 	totalRooms = databaseManager.getTableCount(forms.RoomsGrid.foundset);

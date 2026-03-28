@@ -3,7 +3,7 @@
  * @type {String}
  * @protected
  * 
- * @properties={typeid:35,uuid:"AED8037B-EC52-44EA-AB22-970A86920B39"}
+ * @properties={"typeid":35,"uuid":"AED8037B-EC52-44EA-AB22-970A86920B39"}
  */
 var version = '';
 
@@ -22,7 +22,7 @@ function getVersion() {
  * @type {String}
  * @protected
  * 
- * @properties={typeid:35,uuid:"C167F619-4190-44D7-BDE7-BF7FC40B74A5"}
+ * @properties={"typeid":35,"uuid":"C167F619-4190-44D7-BDE7-BF7FC40B74A5"}
  */
 var id = '';
 

@@ -111,7 +111,7 @@
  * @private
  * @type {Date}
  *
- * @properties={typeid:35,uuid:"52934E8C-E1B9-49AC-A576-F0E42DEF60B7",variableType:93}
+ * @properties={"typeid":35,"uuid":"52934E8C-E1B9-49AC-A576-F0E42DEF60B7","variableType":93}
  */
 var APPLICATION_START_DATE = new Date();
 
@@ -120,14 +120,14 @@ var APPLICATION_START_DATE = new Date();
  * @private
  * @type {String}
  *
- * @properties={typeid:35,uuid:"282E129E-AEB0-4B2F-8ABB-5DDF5F0C09DC"}
+ * @properties={"typeid":35,"uuid":"282E129E-AEB0-4B2F-8ABB-5DDF5F0C09DC"}
  */
 var NEW_LINE = Packages.java.lang.System.getProperty("line.separator");
 
 /**
  * @private
  *
- * @properties={typeid:35,uuid:"BE695155-2057-40ED-B87D-803BE91F1CDA",variableType:-4}
+ * @properties={"typeid":35,"uuid":"BE695155-2057-40ED-B87D-803BE91F1CDA","variableType":-4}
  */
 var useTimeStampsInMilliseconds = true;
 
@@ -142,6 +142,8 @@ function setTimeStampsInMilliseconds(timeStampsInMilliseconds) {
 	useTimeStampsInMilliseconds = timeStampsInMilliseconds
 }
 
+/* --------------------------------Utility functions------------------------------------------ */
+
 /**
  * TODO figure out what to do with this method. Made it private for now as to not expose it in the API
  * @private
@@ -153,7 +155,7 @@ function isTimeStampsInMilliseconds() {
 	return useTimeStampsInMilliseconds;
 }
 
-/* --------------------------------Utility functions------------------------------------------ */
+/* ----------------------------------Configuration------------------------------------ */
 
 /**
  * Returns a nicely formatted representation of an error
@@ -196,8 +198,6 @@ function getExceptionStringRep(ex) {
 	return null;
 }
 
-/* ----------------------------------Configuration------------------------------------ */
-
 /**
  * Type Definition for the config parameter of {@link #loadConfig}<br>
  * <br>
@@ -223,13 +223,13 @@ function getExceptionStringRep(ex) {
  *  }
  * }}
  *
- * @properties={typeid:35,uuid:"9968F91A-7D3B-4FD6-8CFE-5424DE80D46F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"9968F91A-7D3B-4FD6-8CFE-5424DE80D46F","variableType":-4}
  */
 var CONFIG_TYPE_DEF;
 
 /**
  * @private 
- * @properties={typeid:35,uuid:"64DE8B65-AA2E-4B1D-99DE-36983CAF6DB7",variableType:-4}
+ * @properties={"typeid":35,"uuid":"64DE8B65-AA2E-4B1D-99DE-36983CAF6DB7","variableType":-4}
  */
 var defaultConfig = {
 	status: "error", 
@@ -255,7 +255,7 @@ var defaultConfig = {
 /**
  * @private 
  * @type {CONFIG_TYPE_DEF}
- * @properties={typeid:35,uuid:"9C2C2402-79C3-417A-BF27-19B1C5F6D63F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"9C2C2402-79C3-417A-BF27-19B1C5F6D63F","variableType":-4}
  */
 var currentConfig = defaultConfig;
 
@@ -522,7 +522,7 @@ function loadConfig(configuration) {
 /**
  * @private 
  * @type {Object<AbstractAppender>}
- * @properties={typeid:35,uuid:"42790755-ECF4-4604-91DC-6DB654A73344",variableType:-4}
+ * @properties={"typeid":35,"uuid":"42790755-ECF4-4604-91DC-6DB654A73344","variableType":-4}
  */
 var namedAppenders = {};
 
@@ -584,6 +584,8 @@ function getAppenderForRef(appenderRef) {
 	}
 	return null
 }
+
+/* ----------------------------------Levels------------------------------------ */
 
 /**
  * Generic method to create a configured instance of a LogPlugin subclass, based on the attributes of the configNode
@@ -660,8 +662,6 @@ function getPluginInstance(type, configNode) {
 	return factory.create.apply(factory, args)
 }
 
-/* ----------------------------------Levels------------------------------------ */
-
 /**
  * @public
  * @constructor 
@@ -678,9 +678,9 @@ function Level(level, name) {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"8CB2F193-D26E-47E7-AF91-28574067D667",variableType:-4}
+ * @properties={"typeid":35,"uuid":"8CB2F193-D26E-47E7-AF91-28574067D667","variableType":-4}
  */
-var initLevel = (/** @constructor */ function() {
+var initLevel = (/** @parse */ function() {
 		Level.prototype = {
 			toString: function() {
 				return this.name;
@@ -727,8 +727,6 @@ var initLevel = (/** @constructor */ function() {
 		}
 	}());
 
-/* -------------------------------MessageFactory--------------------------------------- */
-
 /**
  * @public 
  * @constructor 
@@ -742,9 +740,9 @@ function AbstractMessageFactory() {}
  * @private
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"CA03143B-DE1F-40FE-9F21-7F6AD3DF03EF",variableType:-4}
+ * @properties={"typeid":35,"uuid":"CA03143B-DE1F-40FE-9F21-7F6AD3DF03EF","variableType":-4}
  */
-var initAbstractMessageFactory = (/** @constructor */ function() {
+var initAbstractMessageFactory = (/** @parse */ function() {
 	/**
 	 * @public 
 	 * @param {String|Object|*} message 
@@ -792,9 +790,9 @@ function ParameterizedMessageFactory() {
  * @private
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"AEB56CA1-2987-4510-940A-B7201936986D",variableType:-4}
+ * @properties={"typeid":35,"uuid":"AEB56CA1-2987-4510-940A-B7201936986D","variableType":-4}
  */
-var initParameterizedMessageFactory = (/** @constructor */ function() {
+var initParameterizedMessageFactory = (/** @parse */ function() {
 	ParameterizedMessageFactory.prototype = Object.create(AbstractMessageFactory.prototype)
 	ParameterizedMessageFactory.prototype.constructor = ParameterizedMessageFactory
 
@@ -806,11 +804,9 @@ var initParameterizedMessageFactory = (/** @constructor */ function() {
 /**
  * @private
  * @type {AbstractMessageFactory}
- * @properties={typeid:35,uuid:"87FC8503-D5E5-4BB7-B777-3CC94617BAD7",variableType:-4}
+ * @properties={"typeid":35,"uuid":"87FC8503-D5E5-4BB7-B777-3CC94617BAD7","variableType":-4}
  */
 var defaultMessageFactory = new ParameterizedMessageFactory();
-
-/* ---------------------------------Message------------------------------------- */
 
 /**
  * TODO: documentation
@@ -824,9 +820,6 @@ var defaultMessageFactory = new ParameterizedMessageFactory();
  * @properties={typeid:24,uuid:"36095B79-6EF7-4449-A89E-C4867F327578"}
  */
 function AbstractMessage(message, params) {
-	if (this.constructor.name === 'AbstractMessage') {
-		//TODO: throw an exception about invoking an Abstract Constructor
-	}
 	/**
 	 * @protected 
 	 */
@@ -838,6 +831,7 @@ function AbstractMessage(message, params) {
 	this.parameters = arguments.length == 1 ? null : Array.prototype.slice.call(arguments, 1)
 	/**
 	 * @protected 
+	 * @type {Error}
 	 */
 	this.throwable = this.parameters && this.parameters.length && this.parameters.slice(-1)[0] instanceof Error ? this.parameters.slice(-1)[0] : null
 }
@@ -845,9 +839,9 @@ function AbstractMessage(message, params) {
 /**
  * @private
  * @SuppressWarnings(unused)
-  * @properties={typeid:35,uuid:"0960F1DA-3085-4D33-A31E-794E5F7E4F68",variableType:-4}
+  * @properties={"typeid":35,"uuid":"0960F1DA-3085-4D33-A31E-794E5F7E4F68","variableType":-4}
  */
-var initAbstractMessage = (/** @constructor */ function(){
+var initAbstractMessage = (/** @parse */ function(){
 	/**
 	 * @protected
 	 */
@@ -918,9 +912,9 @@ function StringFormattedMessage(message, params) {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"A7691A61-E4B9-4707-9034-8DDDACF36A3B",variableType:-4}
+ * @properties={"typeid":35,"uuid":"A7691A61-E4B9-4707-9034-8DDDACF36A3B","variableType":-4}
  */
-var initStringformattedMessage = (/** @constructor */ function() {
+var initStringformattedMessage = (/** @parse */ function() {
 	StringFormattedMessage.prototype = Object.create(AbstractMessage.prototype)
 	StringFormattedMessage.prototype.constructor = StringFormattedMessage
 	
@@ -952,9 +946,9 @@ function ParameterizedMessage(message, params) {
 /** 
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"F678ABD1-57B4-4319-9772-F084F223BAF6",variableType:-4}
+ * @properties={"typeid":35,"uuid":"F678ABD1-57B4-4319-9772-F084F223BAF6","variableType":-4}
  */
-var initParameterizedMessage = (/** @constructor */ function() {
+var initParameterizedMessage = (/** @parse */ function() {
 	ParameterizedMessage.prototype = Object.create(AbstractMessage.prototype)
 	ParameterizedMessage.prototype.constructor = ParameterizedMessage
 
@@ -1047,9 +1041,9 @@ function SimpleMessage(message) {
  * @private
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"2BAE5202-1155-4923-B40F-72A7ADF26F77",variableType:-4}
+ * @properties={"typeid":35,"uuid":"2BAE5202-1155-4923-B40F-72A7ADF26F77","variableType":-4}
  */
-var initSimpleMessage = (/** @constructor */ function() {
+var initSimpleMessage = (/** @parse */ function() {
 	SimpleMessage.prototype = Object.create(AbstractMessage.prototype)
 	SimpleMessage.prototype.constructor = SimpleMessage
 	
@@ -1076,9 +1070,9 @@ function ObjectMessage(object) {
  * @private
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"6D980F77-FB92-475E-8895-6BA8C01B59A0",variableType:-4}
+ * @properties={"typeid":35,"uuid":"6D980F77-FB92-475E-8895-6BA8C01B59A0","variableType":-4}
  */
-var initObjectMessage = (/** @constructor */ function() {
+var initObjectMessage = (/** @parse */ function() {
 	ObjectMessage.prototype = Object.create(AbstractMessage.prototype)
 	ObjectMessage.prototype.constructor = ObjectMessage
 	
@@ -1098,8 +1092,6 @@ var initObjectMessage = (/** @constructor */ function() {
 		return (this.format instanceof Error || this.format instanceof ServoyException) ? this.format : null
 	}
 }());
-
-/* ----------------------------------Loggers------------------------------------ */
 
 /**
  * TODO: the mechanism of Logger and LoggerConfig can be optimized even further: 
@@ -1174,9 +1166,9 @@ function LoggerConfig(name, messageFactory, logger) {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"0F992E15-B252-4AC8-9041-F2AF6A132DE2",variableType:-4}
+ * @properties={"typeid":35,"uuid":"0F992E15-B252-4AC8-9041-F2AF6A132DE2","variableType":-4}
 	 */
-var initLoggerConfig = (/** @constructor */ function(){
+var initLoggerConfig = (/** @parse */ function(){
 	LoggerConfig.prototype = Object.create(LogPlugin.prototype)
 	LoggerConfig.prototype.constructor = LoggerConfig
 	
@@ -1480,7 +1472,7 @@ var initLoggerConfig = (/** @constructor */ function(){
  * @private 
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"008FD40C-B8C7-4458-B7C3-E68C68B00319",variableType:-4}
+ * @properties={"typeid":35,"uuid":"008FD40C-B8C7-4458-B7C3-E68C68B00319","variableType":-4}
  */
 var ILogConfig;
 
@@ -1500,7 +1492,7 @@ function Logger(internal, messageFactory) {
 	 */
 	var customMessageFactory = messageFactory
 	
-	var isRoot = (this.name === ROOT_LOGGER_NAME);
+	var isRoot = (internal && internal.name === ROOT_LOGGER_NAME);
 
 	/**
 	 * Generic logging method<br>
@@ -1520,11 +1512,11 @@ function Logger(internal, messageFactory) {
 			} else {
 				var args = Array.prototype.slice.call(arguments, 1)
 				var lastParam = args[args.length - 1]
-				if (lastParam instanceof ServoyException || lastParam instanceof Packages.java.lang.Exception) {
-					/**@type {ServoyException|Packages.java.lang.Exception}*/
-					var ex = lastParam
-					args[args.length - 1] = new scopes.svyExceptions.ServoyError(ex)				
-				}
+				if (lastParam instanceof ServoyException || lastParam instanceof java.lang.Exception) {
+					/**@type {ServoyException}*/
+					var svyEx = lastParam
+					args[args.length - 1] = new scopes.svyExceptions.ServoyError(svyEx)				
+				} else 
 			
 				internal.log(level, (customMessageFactory||defaultMessageFactory).newMessage.apply(customMessageFactory||defaultMessageFactory, args))
 			}
@@ -1872,7 +1864,7 @@ function Logger(internal, messageFactory) {
  * TODO: should be a WeakMap to unreferenced loggers are GC. Currently Loggers hold a direct reference to their parent and children, so this wouldn't help.
  * @private
  * @type {Object<LoggerConfig>}
- * @properties={typeid:35,uuid:"0F49DC42-01BC-4720-B19F-DA1B30BF9D1E",variableType:-4}
+ * @properties={"typeid":35,"uuid":"0F49DC42-01BC-4720-B19F-DA1B30BF9D1E","variableType":-4}
  */
 var loggers = {};
 
@@ -1880,20 +1872,20 @@ var loggers = {};
 * @public
 * @type {String}
 *
-* @properties={typeid:35,uuid:"7AA018E7-ACA9-4215-9117-597DF91D7D16"}
+* @properties={"typeid":35,"uuid":"7AA018E7-ACA9-4215-9117-597DF91D7D16"}
 */
 var ROOT_LOGGER_NAME = "root";
 
 /**
  * @private
- * @properties={typeid:35,uuid:"EC4E9958-AA1E-4F91-9612-FEEB50E4CFA9",variableType:-4}
+ * @properties={"typeid":35,"uuid":"EC4E9958-AA1E-4F91-9612-FEEB50E4CFA9","variableType":-4}
  */
 var ROOT_LOGGER_DEFAULT_LEVEL = application.isInDeveloper() ? Level.DEBUG : Level.WARN;
 
 /**
  * @private
  * @type {LoggerConfig}
- * @properties={typeid:35,uuid:"8FD01917-2F91-4033-A373-C6B8476A6476",variableType:-4}
+ * @properties={"typeid":35,"uuid":"8FD01917-2F91-4033-A373-C6B8476A6476","variableType":-4}
  */
 var rootLogger;
 
@@ -2046,6 +2038,9 @@ function LoggingEvent(logger, timeStamp, level, message) {
 	this.timeStampInMilliseconds = timeStamp.getTime()
 	this.timeStampInSeconds = Math.floor(this.timeStampInMilliseconds / 1000)
 	this.milliseconds = this.timeStamp.getMilliseconds()
+	/**
+	 * @type {Level}
+	 */
 	this.level = level
 	/**
 	 * @type {AbstractMessage}
@@ -2056,20 +2051,15 @@ function LoggingEvent(logger, timeStamp, level, message) {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"6BE6F430-807C-4673-85CC-055DFE1DD45F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"6BE6F430-807C-4673-85CC-055DFE1DD45F","variableType":-4}
  */
-var initLoggingEvent = (/** @constructor */ function() {
+var initLoggingEvent = (/** @parse */ function() {
 	LoggingEvent.prototype = {
-		getThrowableStrRep: function() { //CHECKME This seems to not get called from anywhere
-			return this.exception ? getExceptionStringRep(this.exception) : "";
-		},
 		toString: function() {
 			return "LoggingEvent[" + this.level + "]";
 		}
 	};
 }());
-
-/* -------------------------------LogPlugin prototype--------------------------------------- */
 
 /**
  * Empty base class for all classes that are to be configurable Log components</br>
@@ -2087,7 +2077,7 @@ function LogPlugin (){}
  * }}
  * @private 
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"278F3AAE-604B-4685-AA3E-B4317E553D24",variableType:-4}
+ * @properties={"typeid":35,"uuid":"278F3AAE-604B-4685-AA3E-B4317E553D24","variableType":-4}
  */
 var PLUGIN_FACTORY_TYPE_DEF;
 
@@ -2095,7 +2085,7 @@ var PLUGIN_FACTORY_TYPE_DEF;
  * Map holding all LogPlugin constructors by name. the constructor functions must be extending LogPlugin
  * @private 
  * @type {Object<Function>}
- * @properties={typeid:35,uuid:"F33918BB-200F-4EA9-BC61-0B4C3778DB2C",variableType:-4}
+ * @properties={"typeid":35,"uuid":"F33918BB-200F-4EA9-BC61-0B4C3778DB2C","variableType":-4}
  */
 var logPlugins = {};
 
@@ -2104,11 +2094,9 @@ var logPlugins = {};
  * @private 
  * @type {Array<String>}
  *
- * @properties={typeid:35,uuid:"941CB850-3A34-4274-A742-8775203F0898",variableType:-4}
+ * @properties={"typeid":35,"uuid":"941CB850-3A34-4274-A742-8775203F0898","variableType":-4}
  */
 var defaultLogPlugins = null;
-
-/* --------------------------------Appender prototype-------------------------------------- */
 
 /**
  * Abstract implementation for Appenders. Each subclass must override the .append(LoggingEvent) and .toString() methods<br>
@@ -2133,9 +2121,9 @@ function AbstractAppender() {
  * @private 
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"8B52A861-1DDF-487E-9C89-94551992722F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"8B52A861-1DDF-487E-9C89-94551992722F","variableType":-4}
  */
-var initAbstractAppender = (/** @constructor */ function(){
+var initAbstractAppender = (/** @parse */ function(){
 	AbstractAppender.prototype = Object.create(LogPlugin.prototype)
 	AbstractAppender.prototype.constructor = AbstractAppender
 	
@@ -2243,9 +2231,9 @@ function ApplicationOutputAppender() {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"CCE870E3-C277-473F-9332-5B2EC5597282",variableType:-4}
+ * @properties={"typeid":35,"uuid":"CCE870E3-C277-473F-9332-5B2EC5597282","variableType":-4}
  */
-var initApplicationOutputAppender = (/** @constructor */ function(){
+var initApplicationOutputAppender = (/** @parse */ function(){
 	ApplicationOutputAppender.prototype = Object.create(AbstractAppender.prototype);
 	ApplicationOutputAppender.prototype.constructor = ApplicationOutputAppender
 	
@@ -2319,8 +2307,6 @@ var initApplicationOutputAppender = (/** @constructor */ function(){
 	}
 }());
 
-/* -------------------------------Layout prototype--------------------------------------- */
-
 /**
  * Abstract Layout implementation to be extended for actual Layouts
  * @public 
@@ -2362,9 +2348,9 @@ function AbstractLayout() {
 /**
  * @private 
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"994AF0DE-AA41-453A-B2E0-61047DBFC751",variableType:-4}
+ * @properties={"typeid":35,"uuid":"994AF0DE-AA41-453A-B2E0-61047DBFC751","variableType":-4}
  */
-var initAbstractLayout = (/** @constructor */ function() {
+var initAbstractLayout = (/** @parse */ function() {
 	AbstractLayout.prototype = Object.create(LogPlugin.prototype)
 	AbstractLayout.prototype.constructor = AbstractLayout
 	
@@ -2425,7 +2411,7 @@ var initAbstractLayout = (/** @constructor */ function() {
 	/**
 	 * Used by JSOn Layout
 	 * @param {LoggingEvent} loggingEvent
-	 * @return {Array<Array<String|Date>>}
+	 * @return {Array<Array<String|Number>>}
 	 */
 	AbstractLayout.prototype.getDataValues = function(loggingEvent) {
 		var dataValues = [
@@ -2500,8 +2486,6 @@ var initAbstractLayout = (/** @constructor */ function() {
 	}
 }());
 
-/* ---------------------------------SimpleLayout------------------------------------- */
-
 /**
  * @private 
  * @constructor
@@ -2517,9 +2501,9 @@ function SimpleLayout() {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"0427BB0C-1835-4CFC-8477-5F56A5DD8387",variableType:-4}
+ * @properties={"typeid":35,"uuid":"0427BB0C-1835-4CFC-8477-5F56A5DD8387","variableType":-4}
  */
-var initSimpleLayout = (/** @constructor */ function() {
+var initSimpleLayout = (/** @parse */ function() {
 	SimpleLayout.prototype = Object.create(AbstractLayout.prototype);
 	SimpleLayout.prototype.constructor = SimpleLayout
 
@@ -2545,8 +2529,6 @@ var initSimpleLayout = (/** @constructor */ function() {
 	}
 }());
 
-/* ---------------------------------NullLayout-------------------------------------- */
-
 /**
  * @private 
  * @constructor
@@ -2562,9 +2544,9 @@ function NullLayout() {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"BEF97D79-9D62-4B12-87B3-ABE53EA0C738",variableType:-4}
+ * @properties={"typeid":35,"uuid":"BEF97D79-9D62-4B12-87B3-ABE53EA0C738","variableType":-4}
  */
-var initNullLayout = (/** @constructor */ function() {
+var initNullLayout = (/** @parse */ function() {
 	NullLayout.prototype = Object.create(AbstractLayout.prototype);
 	NullLayout.prototype.constructor = NullLayout
 
@@ -2594,8 +2576,6 @@ var initNullLayout = (/** @constructor */ function() {
 	}
 }());
 
-/* ---------------------------------XmlLayout------------------------------------- */
-
 /**
  * @private 
  * @constructor
@@ -2611,9 +2591,9 @@ function XmlLayout() {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"5A02CFFB-582D-4B3F-92AD-B4DEA07071F2",variableType:-4}
+ * @properties={"typeid":35,"uuid":"5A02CFFB-582D-4B3F-92AD-B4DEA07071F2","variableType":-4}
  */
-var initXmlLayout = (/** @constructor */ function() {
+var initXmlLayout = (/** @parse */ function() {
 	XmlLayout.prototype = Object.create(AbstractLayout.prototype);
 	XmlLayout.prototype.constructor = XmlLayout
 
@@ -2673,8 +2653,6 @@ var initXmlLayout = (/** @constructor */ function() {
 	}
 	}());
 
-/* ---------------------------------JsonLayout------------------------------------- */
-
 /**
  * @private
  * @param str
@@ -2713,9 +2691,9 @@ function JsonLayout(readable) {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"3350BBD8-3E6C-4E29-AEBA-FE90AEB1D0A8",variableType:-4}
+ * @properties={"typeid":35,"uuid":"3350BBD8-3E6C-4E29-AEBA-FE90AEB1D0A8","variableType":-4}
  */
-var initJsonLayout = (/** @constructor */ function() {
+var initJsonLayout = (/** @parse */ function() {
 	JsonLayout.prototype = Object.create(AbstractLayout.prototype);
 	JsonLayout.prototype.constructor = JsonLayout
 		
@@ -2795,8 +2773,6 @@ var initJsonLayout = (/** @constructor */ function() {
 	}
 }());
 
-/* ---------------------------------HttpPostDataLayout------------------------------------- */
-
 /**
  * @private 
  * @constructor 
@@ -2814,9 +2790,9 @@ function HttpPostDataLayout() {
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"BB86A214-5807-443C-A4F0-934F4671552D",variableType:-4}
+ * @properties={"typeid":35,"uuid":"BB86A214-5807-443C-A4F0-934F4671552D","variableType":-4}
  */
-var initHttpPostdataLayout = (/** @constructor */ function() {
+var initHttpPostdataLayout = (/** @parse */ function() {
 	HttpPostDataLayout.prototype = Object.create(AbstractLayout.prototype);
 	HttpPostDataLayout.prototype.constructor = HttpPostDataLayout
 		
@@ -2859,13 +2835,6 @@ var initHttpPostdataLayout = (/** @constructor */ function() {
 		}
 	}
 }());
-
-/* --------------------------------formatObjectExpansion-------------------------------------- */
-
-/* TODO: replace this utility method with JSON.Stringify:
- * - Take care of cyclic references using a replacer function
- * - strip out the double quotes around the keys using regex: http://stackoverflow.com/questions/11233498/json-stringify-without-quotes-on-properties
- */
 
 /**
  * Helper method that stringifies Objects (and prevents recursion while doing that)
@@ -2956,8 +2925,6 @@ function formatObjectExpansion(object, maxdepth, indent) {
 	return doFormat(object, maxdepth, indent);
 }
 
-/* ---------------------------------PatternLayout------------------------------------- */
-
 /**
  * @private 
  * @constructor
@@ -2972,12 +2939,14 @@ function PatternLayout(pattern) {
 	this.customFields = [];
 }
 
+/* ---------------------------------PatternLayout------------------------------------- */
+
 /**
  * @private
  * @SuppressWarnings(unused)
- * @properties={typeid:35,uuid:"DEC0D9CB-1760-41E1-9408-5310708D3DC6",variableType:-4}
+ * @properties={"typeid":35,"uuid":"DEC0D9CB-1760-41E1-9408-5310708D3DC6","variableType":-4}
  */
-var initPatternLayout = (/** @constructor */ function() {
+var initPatternLayout = (/** @parse */ function() {
 		PatternLayout.TTCC_CONVERSION_PATTERN = "%r %p %c - %m%n";
 		PatternLayout.DEFAULT_CONVERSION_PATTERN = "%m%n";
 		PatternLayout.ISO8601_DATEFORMAT = "yyyy-MM-dd HH:mm:ss,SSS";
@@ -3229,11 +3198,9 @@ var initPatternLayout = (/** @constructor */ function() {
 	}()
 );
 
-/* --------------------------------Simple logging for log4javascript itself-------------------------------------- */
-
 /**
  * @private
- * @properties={typeid:35,uuid:"7BA41465-E0B4-4A49-9A83-FA49AF7E644C",variableType:-4}
+ * @properties={"typeid":35,"uuid":"7BA41465-E0B4-4A49-9A83-FA49AF7E644C","variableType":-4}
  */
 var statusLoggerConfig = {
 	name: 'StatusLogger',
@@ -3267,7 +3234,7 @@ var statusLoggerConfig = {
  * @type {Logger}
  * @private
  *
- * @properties={typeid:35,uuid:"EB873CA1-E87F-45C5-8466-92A241156D3F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"EB873CA1-E87F-45C5-8466-92A241156D3F","variableType":-4}
  */
 var statusLogger = new Logger(statusLoggerConfig);
 

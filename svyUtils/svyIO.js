@@ -34,18 +34,21 @@
  * 
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"663420E6-0054-46C0-A328-5257365E0057",variableType:-4}
+ * @properties={"typeid":35,"uuid":"663420E6-0054-46C0-A328-5257365E0057","variableType":-4}
  */
-var log = scopes.svyLogManager.getLogger('com.servoy.bap.utils.io');
+var log = application.getLogger('com.servoy.extensions.utils.svyIO');
 
 /**
  * Opens a file from the file system using the default viewer for the fileType on the current platform. (.txt with editor, .pdf with pdf reader, .doc with word, etc.)
  * 
  * @public
  * 
+ * @deprecated 
+ * 
  * @param {plugins.file.JSFile|String} file The file that will be opened
  *
  * @properties={typeid:24,uuid:"95C45F79-F469-4542-BB8B-BE226010D8B1"}
+ * @SuppressWarnings(deprecated)
  */
 function openFileWithDefaultViewer(file) {
 	// TODO: Support opening in the WC: either plugins.file.writeFile, but required to read the content first or showUrl, if file is accessible from the outside (see deprecated globals.svy_utl_open_file())
@@ -137,7 +140,7 @@ function unzip(fileToUnzip, targetFile) {
 		}
 	} catch (e) {
 		// IO Exception
-		log.error('Failed to unzip file "{}": {}', fileToUnzip.getAbsolutePath(), e.message);
+		log.error.log('Failed to unzip file "{}": {}', fileToUnzip.getAbsolutePath(), e.message);
 		return null;
 	} finally {
 		if (zipFile) {
@@ -245,7 +248,7 @@ function zip(fileToZip, targetFile, filenamesToStoreUncompressed) {
 		zos.close();
 		zos = null;
 	} catch(e) {
-		log.error('Error zipping file "{}": {}', fileToZip.getAbsolutePath(), e.message);
+		log.error.log('Error zipping file "{}": {}', fileToZip.getAbsolutePath(), e.message);
 		throw e;
 	} finally {
 		try {
@@ -305,7 +308,7 @@ function calculateHash(file, algorithm) {
 		//return hex.toString();
 		return hex;
 	} catch (e) {
-		log.error('Error calculating Hash for file "' + file.getAbsolutePath() + '": ' + e.message);
+		log.error.log('Error calculating Hash for file "' + file.getAbsolutePath() + '": ' + e.message);
 		return null;
 	}
 }
@@ -317,7 +320,7 @@ function calculateHash(file, algorithm) {
  * 
  * @enum
  *
- * @properties={typeid:35,uuid:"DA2141EB-E8D0-431D-9241-0392E2051BC9",variableType:-4}
+ * @properties={"typeid":35,"uuid":"DA2141EB-E8D0-431D-9241-0392E2051BC9","variableType":-4}
  */
 var HASH_ALGORITHM = {
 	MD2: "MD2",	
@@ -359,7 +362,7 @@ function channelCopy(src, dest) {
 
 		src.close();
 	} catch (e) {
-		log.error(e);
+		log.error.log(e);
 	}
 }
 
@@ -368,7 +371,7 @@ function channelCopy(src, dest) {
  * 
  * @enum
  * 
- * @properties={typeid:35,uuid:"C217D4B1-1E19-439C-B056-8CE6D4C0C14F",variableType:-4}
+ * @properties={"typeid":35,"uuid":"C217D4B1-1E19-439C-B056-8CE6D4C0C14F","variableType":-4}
  */
 var CHAR_SETS = {
 	/** Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the Unicode character set.*/
@@ -451,7 +454,7 @@ function getLineCountForFile(file) {
 		}
 	    return lnr.getLineNumber(); 
 	} catch (e) {
-		log.error('Error getting max lines for file "{}"', file.getName(), e);
+		log.error.log('Error getting max lines for file "{}"', file.getName(), e);
 	} finally {
 		lnr.close();
 		fr.close();
@@ -508,7 +511,7 @@ function getLineCountForFile(file) {
  */
 function BufferedWriter(pathOrFile, append, charset) {
 	if (!(this instanceof BufferedWriter)) {
-		log.warn('scopes.svyIO.BufferedWriter: Constructor functions should be called with the "new" keyword!');
+		log.warn.log('scopes.svyIO.BufferedWriter: Constructor functions should be called with the "new" keyword!');
 		return new BufferedWriter(pathOrFile, append, charset);
 	}
 
@@ -721,6 +724,12 @@ function FileNotFoundException(errorMessage, file) {
 	IOException.call(this, errorMessage || 'File not found');
 }
 
+/*
+ * TODO: add file writer stuff:
+ * - https://www.servoy.com/forum/viewtopic.php?f=22&t=13866&p=72648&hilit=java.io.filewriter#p72637
+ * - https://www.servoy.com/forum/viewtopic.php?t=6391
+ */
+
 /**
  * Point prototypes to superclasses
  * 
@@ -728,7 +737,7 @@ function FileNotFoundException(errorMessage, file) {
  * 
  * @SuppressWarnings(unused)
  *
- * @properties={typeid:35,uuid:"DAF325B1-1E2C-46A6-92C8-D4B2631B15E1",variableType:-4}
+ * @properties={"typeid":35,"uuid":"DAF325B1-1E2C-46A6-92C8-D4B2631B15E1","variableType":-4}
  */
 var init = function() {
 	IOException.prototype = Object.create(scopes.svyExceptions.SvyException.prototype);
@@ -737,12 +746,6 @@ var init = function() {
 	FileNotFoundException.prototype = Object.create(IOException.prototype);
 	FileNotFoundException.prototype.constructor = FileNotFoundException;
 }();
-
-/*
- * TODO: add file writer stuff:
- * - https://www.servoy.com/forum/viewtopic.php?f=22&t=13866&p=72648&hilit=java.io.filewriter#p72637
- * - https://www.servoy.com/forum/viewtopic.php?t=6391
- */
 
 /**
  * This method is useful for doing simple base64 encoding.<br/>
@@ -754,10 +757,13 @@ var init = function() {
  * @example <pre>var getRequest = http.createGetRequest(url);
  *getRequest.addHeader('Authorization', 'Basic ' + scopes.svyIO.encodeBase64(user + ':' + passwordOrToken));</pre>
  *
+ * @deprecated Replaced by Servoy Native function: utils.stringToBase64
  * @properties={typeid:24,uuid:"0B0B4F09-09F4-4D11-9DD7-E64E40E3A968"}
  */
 function encodeStringToBase64(inputString) {
-    return Packages.org.apache.commons.codec.binary.Base64.encodeBase64String(new Packages.java.lang.String(inputString).getBytes());
+	/** @type {Array<byte>} */
+	var bytes = new Packages.java.lang.String(inputString).getBytes()
+    return Packages.org.apache.commons.codec.binary.Base64.encodeBase64String(bytes);
 }
 
 /**
