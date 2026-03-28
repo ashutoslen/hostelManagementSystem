@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-Name: counters
+Bundle-SymbolicName: counters
+Package-Type: Web-Component
+Bundle-Version: 1.0.0
+NPM-PackageName: counters
+NG2-Module: countersModule
+Entry-Point: dist
+
+Name: Counter/Counter.spec
+Web-Component: True
+
